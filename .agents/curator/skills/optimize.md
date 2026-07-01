@@ -16,7 +16,7 @@ Welche Dateien werden wann geladen? Tabelle erstellen und vorlegen:
 | Datei                               | Ladebedingung              | Referenziert von         |
 | ----------------------------------- | -------------------------- | ------------------------ |
 | `AGENTS.md`                         | immer — zuerst             | — (globale Basis)        |
-| `.agents/agents/<slug>.agent.md`    | immer                      | — (Einstiegspunkt)       |
+| `.agents/<slug>.agent.md`           | immer                      | — (Einstiegspunkt)       |
 | `.agents/curator/skills/INDEX.md`   | immer (nur Curator)        | `agent-curator.agent.md` |
 | `.agents/curator/skills/<skill>.md` | on-demand: Skill aktiviert | `INDEX.md`               |
 
@@ -24,7 +24,7 @@ Welche Dateien werden wann geladen? Tabelle erstellen und vorlegen:
 
 Alle Dateien des Target Agents lesen und prüfen auf:
 
-- **Redundanzen:** Regeln die an mehreren Stellen stehen — authoritative Stelle bestimmen. Prüfen ob eine Regel in `.agents/agents/<slug>.agent.md` eigentlich allgemein gilt → dann nach `AGENTS.md` verschieben.
+- **Redundanzen:** Regeln die an mehreren Stellen stehen — authoritative Stelle bestimmen. Prüfen ob eine Regel in `.agents/<slug>.agent.md` eigentlich allgemein gilt → dann nach `AGENTS.md` verschieben.
 - **Widersprüche:** Konfligierende Anweisungen zwischen Dateien.
 - **Veraltete Inhalte:** Formulierungen die nicht mehr stimmen.
 - **Unnötige Ausführlichkeit:** Erklärungen die der Agent nicht braucht um korrekt zu handeln.
