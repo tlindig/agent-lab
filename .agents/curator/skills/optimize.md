@@ -31,6 +31,7 @@ Alle Dateien des Target Agents lesen und prüfen auf:
 - **Fehlende Referenzen:** Dateien die benötigt aber nicht zuverlässig geladen werden.
 - **Zirkuläre Referenzen:** A → B → A — Abhängigkeitskette nachverfolgen.
 - **Placeholder-Inkonsistenz:** Werden die Konventionen aus `agent-curator.agent.md` eingehalten?
+- **Negative Formulierungen:** Regeln die als Verbote oder Einschränkungen formuliert sind → in positive Handlungsanweisungen umwandeln.
 
 ### Schritt 3 — Vorlegen
 
