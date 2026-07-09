@@ -17,8 +17,8 @@ Welche Dateien werden wann geladen? Tabelle erstellen und vorlegen:
 | ----------------------------------- | -------------------------- | ------------------------ |
 | `AGENTS.md`                         | immer — zuerst             | — (globale Basis)        |
 | `.agents/<slug>.agent.md`           | immer                      | — (Einstiegspunkt)       |
-| `.agents/curator/skills/INDEX.md`   | immer (nur Curator)        | `agent-curator.agent.md` |
-| `.agents/curator/skills/<skill>.md` | on-demand: Skill aktiviert | `INDEX.md`               |
+| `.agents/engineer/skills/INDEX.md`   | immer (nur Engineer)       | `agent-engineer.agent.md` |
+| `.agents/engineer/skills/<skill>.md` | on-demand: Skill aktiviert | `INDEX.md`               |
 
 ### Schritt 2 — Analysieren (nur lesen, nicht ändern)
 
@@ -30,7 +30,7 @@ Alle Dateien des Target Agents lesen und prüfen auf:
 - **Unnötige Ausführlichkeit:** Erklärungen die der Agent nicht braucht um korrekt zu handeln.
 - **Fehlende Referenzen:** Dateien die benötigt aber nicht zuverlässig geladen werden.
 - **Zirkuläre Referenzen:** A → B → A — Abhängigkeitskette nachverfolgen.
-- **Placeholder-Inkonsistenz:** Werden die Konventionen aus `agent-curator.agent.md` eingehalten?
+- **Placeholder-Inkonsistenz:** Werden die Konventionen aus `agent-engineer.agent.md` eingehalten?
 - **Negative Formulierungen:** Regeln die als Verbote oder Einschränkungen formuliert sind → in positive Handlungsanweisungen umwandeln.
 
 ### Schritt 3 — Vorlegen
