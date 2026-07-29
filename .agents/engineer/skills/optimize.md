@@ -7,24 +7,19 @@
 
 ## Ablauf
 
-Immer nur einen Target Agent pro Durchlauf optimieren.
+Pro Durchlauf genau einen Target Agent optimieren.
 
 ### Schritt 1 — Loading Map erstellen
 
-Welche Dateien werden wann geladen? Tabelle erstellen und vorlegen:
+Die Loading Map gemäß „Arbeitsweise“ des Agent Engineer erstellen und vorlegen.
 
-| Datei                               | Ladebedingung              | Referenziert von         |
-| ----------------------------------- | -------------------------- | ------------------------ |
-| `AGENTS.md`                         | immer — zuerst             | — (globale Basis)        |
-| `.agents/<slug>.agent.md`           | immer                      | — (Einstiegspunkt)       |
-| `.agents/engineer/skills/INDEX.md`   | immer (nur Engineer)       | `agent-engineer.agent.md` |
-| `.agents/engineer/skills/<skill>.md` | on-demand: Skill aktiviert | `INDEX.md`               |
+### Schritt 2 — Analysieren
 
-### Schritt 2 — Analysieren (nur lesen, nicht ändern)
+Die Analysephase ausschließlich lesend durchführen.
 
 Alle Dateien des Target Agents lesen und prüfen auf:
 
-- **Redundanzen:** Regeln die an mehreren Stellen stehen — authoritative Stelle bestimmen. Prüfen ob eine Regel in `.agents/<slug>.agent.md` eigentlich allgemein gilt → dann nach `AGENTS.md` verschieben.
+- **Redundanzen:** Regeln die an mehreren Stellen stehen — authoritative Stelle bestimmen. Exklusive Regeln in die authoritative Quelle übernehmen. Allgemein geltende Regeln aus `.agents/<slug>.agent.md` nach `AGENTS.md` verschieben.
 - **Widersprüche:** Konfligierende Anweisungen zwischen Dateien.
 - **Veraltete Inhalte:** Formulierungen die nicht mehr stimmen.
 - **Unnötige Ausführlichkeit:** Erklärungen die der Agent nicht braucht um korrekt zu handeln.
@@ -38,4 +33,4 @@ Alle Dateien des Target Agents lesen und prüfen auf:
 Befunde gruppiert nach Kategorie mit konkreten Änderungsvorschlägen vorlegen.
 Loading Map aus Schritt 1 voranstellen.
 
-Auf Bestätigung warten bevor etwas geändert wird.
+Nach der Bestätigung Änderungen vornehmen.

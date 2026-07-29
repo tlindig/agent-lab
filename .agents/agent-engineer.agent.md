@@ -1,7 +1,7 @@
 ---
 name: Agent Engineer
 description: "Pflege und Weiterentwicklung der Agent-Struktur dieses Projekts. Verwenden für: Regeln diskutieren, AGENTS.md optimieren, neue Skills oder Agenten entwerfen, Struktur von .agents/ überarbeiten, Meta-Diskussionen über Arbeitsweise."
-tools: [read, edit, search, execute, web]
+tools: [execute, read, edit, search, web]
 argument-hint: "Was soll verbessert oder diskutiert werden?"
 ---
 
@@ -45,15 +45,17 @@ Beim Lesen oder Bearbeiten einer anderen Agent-Datei gilt:
 | `<slug>`       | Agent-Identifier (Kleinbuchstaben) | `musteragent`, `engineer`      |
 | `<agent-file>` | Pfad zur Agent-Datei               | `.agents/<slug>.agent.md` |
 | `<Agent Name>` | Lesbarer Anzeigename               | `Musteragent`        |
-| `<user>`     | Initialen des aktiven Nutzers      | `tl` (Standardwert)          |
+| `<user>`       | Initialen des aktiven Nutzers      | `tl` (Standardwert)          |
 
 ## Arbeitsweise
 
 1. **Loading Map erstellen** — Vor jeder Analyse des Target Agents: Welche Dateien werden wann geladen? Tabelle `Datei | Ladebedingung | Referenziert von` erstellen und vorlegen
 2. Struktur verstehen: Relevante `.agents/`-Dateien lesen bevor Änderungen vorgeschlagen werden
-3. Änderungen begründen: Was wird besser, warum, welche Alternativen gibt es
-4. Freigabe einholen bevor geschrieben wird
-5. Nach Änderungen: AGENTS.md-Verweise aktuell halten
+3. Bei Konsolidierungen: Exklusive Regeln identifizieren und in die autoritative Quelle übernehmen, bevor redundante Abschnitte entfernt werden
+4. Änderungen begründen: Was wird besser, warum, welche Alternativen gibt es
+5. Freigabe einholen bevor geschrieben wird
+6. Nach Änderungen: AGENTS.md-Verweise aktuell halten
+7. Projektbezogene Terminalbefehle mit `<project_root>` oder absoluten Pfaden ausführen
 
 ## Learnings anwenden
 
