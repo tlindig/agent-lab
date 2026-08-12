@@ -20,12 +20,13 @@ Also check for:
 
 - Contradictions between files
 - Outdated content
-- Unnecessary verbosity
+- Unnecessary verbosity — check against `engineer.agent.md` § Writing Style
 - Missing references (a file is needed but not linked anywhere)
 - Circular references
 - Negative phrasing → convert to positive instructions
 - Content that should be extracted per "When to Extract Skills/Guides/Templates" in `engineer.agent.md`
 - Dead content: sections never actively evaluated at runtime (merely descriptive, or a decision already made elsewhere) — fold into the authoritative source or remove
+- Repeated fixes/rules justified as separate occurrences by surface wording alone — write out each trigger condition explicitly; if they match, consolidate into one general rule
 
 ### Step 2 — Present Findings
 
