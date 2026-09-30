@@ -44,7 +44,7 @@ A **RERULE** re-reads and re-activates all binding rules.
 
 ## Communication
 
-- Chat responses to the user: German. Files and documents (code, comments, commit messages, notes, agent definitions, etc.): English by default — unless the user explicitly requests a different language for that file.
+- Chat responses: the language the user writes in. Files and documents (code, comments, commit messages, notes, agent definitions, etc.): English by default, unless requested otherwise for that file.
 - Write concisely and factually — no filler phrases, no hedging, no fluff. State facts and decisions directly.
 
 ## Learnings
@@ -62,24 +62,25 @@ If a problem surfaces in your own rules or processes during a session — a miss
 
 ## Repository Structure
 
-| Path                                                                          | Role                                             | Notes                                                                                      |
-| ----------------------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `<project_root>/AGENTS.md`                                                    | Baseline agent rules                             | Always loaded; unconditional for all agents                                                |
-| `<project_root>/.agents/<slug>.agent.md`                                      | Canonical agent definition (frontmatter + rules) | Tool-agnostic source of truth; extends `AGENTS.md`                                         |
-| `<project_root>/.github/agents/<slug>.agent.md`                               | Symlink → `../../.agents/<slug>.agent.md`        | VS Code discovery path; never edited directly                                              |
-| `<project_root>/README-<slug>.md`                                             | User-facing description (goal, use cases)        | No internal rules/logic; kept consistent after any agent change                            |
-| `<project_root>/.agents/<slug>/skills/INDEX.md`, `skills/<skill>.md`          | Executable procedure + routing index             | Created only once a skill is actually extracted (see engineer agent's extraction criteria) |
-| `<project_root>/.agents/<slug>/guides/INDEX.md`, `guides/<guide>.md`          | Static reference material                        | Same lazy-extraction rule as skills                                                        |
-| `<project_root>/.agents/<slug>/templates/INDEX.md`, `templates/<template>.md` | Fill-in output structures                        | Same lazy-extraction rule as skills                                                        |
-| `LEARNINGS.md`                                                                | Shared learnings log                             | Append after unexpected behavior or rule gaps; include `<slug>` in heading                 |
+| Path                                                                          | Role                                             | Notes                                                                                     |
+| ----------------------------------------------------------------------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------- |
+| `<project_root>/AGENTS.md`                                                    | Baseline agent rules                             | Always loaded; unconditional for all agents                                               |
+| `<project_root>/README.md`                                                    | Project-level overview (goal, core concept, structure) | General, not agent-specific; kept consistent with `README-<slug>.md` scope boundary |
+| `<project_root>/.agents/<slug>.agent.md`                                      | Canonical agent definition (frontmatter + rules) | Tool-agnostic source of truth; extends `AGENTS.md`                                        |
+| `<project_root>/.github/agents/<slug>.agent.md`                               | Symlink → `../../.agents/<slug>.agent.md`        | VS Code discovery path; never edited directly                                             |
+| `<project_root>/README-<slug>.md`                                             | User-facing description (goal, use cases)        | No internal rules/logic; kept consistent after any agent change                           |
+| `<project_root>/.agents/<slug>/skills/INDEX.md`, `skills/<skill>.md`          | Executable procedure + routing index             | Created only once a skill is actually extracted (see evolver agent's extraction criteria) |
+| `<project_root>/.agents/<slug>/guides/INDEX.md`, `guides/<guide>.md`          | Static reference material                        | Same lazy-extraction rule as skills                                                       |
+| `<project_root>/.agents/<slug>/templates/INDEX.md`, `templates/<template>.md` | Fill-in output structures                        | Same lazy-extraction rule as skills                                                       |
+| `LEARNINGS.md`                                                                | Shared learnings log                             | Append after unexpected behavior or rule gaps; include `<slug>` in heading                |
 
 ## Placeholder Conventions
 
-| Placeholder      | Meaning                                                          | Example                                                  |
-| ---------------- | ---------------------------------------------------------------- | -------------------------------------------------------- |
+| Placeholder      | Meaning                                                          | Example                                                       |
+| ---------------- | ---------------------------------------------------------------- | ------------------------------------------------------------- |
 | `<project_root>` | Absolute path to the project root from this project              | `/mnt/c0c0a17a-da88-4a81-b002-2bd126e422bc/Dev/ai-meta-agent` |
-| `<slug>`         | Agent's lowercase identifier — used in paths and filenames       | `engineer`                           |
-| `<Agent Name>`   | Human-readable display name — used in prose and YAML frontmatter | `Engineer`                                                |
+| `<slug>`         | Agent's lowercase identifier — used in paths and filenames       | `evolver`                                                     |
+| `<Agent Name>`   | Human-readable display name — used in prose and YAML frontmatter | `Evolver Agent`                                               |
 
 <!-- RERULE build rule:
   "Active Agent:  **<slug>**"

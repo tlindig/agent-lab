@@ -1,14 +1,14 @@
-# Engineer Agent
+# Evolver Agent
 
 Maintains and evolves the agent infrastructure of this project (`Dev/ai-agent`): `AGENTS.md`, the `.agents/` agent definitions, and their skills/guides/templates.
 
-The agent is tool-agnostic: the rules live in `.agents/engineer.agent.md` and work with any AI tool that supports file context.
+The agent is tool-agnostic: the rules live in `.agents/evolver.agent.md` and work with any AI tool that supports file context.
 
 ---
 
 ## Using the Agent
 
-**VS Code Copilot:** Select **Engineer** from the agent picker.
+**VS Code Copilot:** Select **Evolver Agent** from the agent picker.
 
 **Typical inputs:**
 
