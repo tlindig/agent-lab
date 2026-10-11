@@ -1,6 +1,19 @@
 # Agent Lab
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 Framework for building AI agents that behave predictably: no guessing, no speculation, no unapproved or destructive actions.
+
+## Quick Start
+
+1. Clone this repository, e.g. into `~/dev/agent-lab`.
+2. Open your target project in VS Code (the project that should get a new agent).
+3. Add this repository as a second workspace folder: **File → Add Folder to Workspace…** → select `agent-lab`. Your target project now has this repo's `AGENTS.md` and Evolver Agent available alongside its own files (see [Where Created Agents Live](#where-created-agents-live)).
+4. In Copilot Chat, open the agent picker and select **Evolver Agent**.
+5. Ask it to create a new agent for your target project, e.g. _"Add a new agent for reviewing pull requests in `<target-project-root>`"_.
+6. The Evolver Agent asks clarifying questions, then proposes new files **inside your target project** (`.agents/<slug>.agent.md`, a `.github/agents/<slug>.agent.md` symlink, `README-<slug>.md`) for your approval before writing anything.
+
+See [README-evolver.md](README-evolver.md) for the full usage guide.
 
 ## Goal
 
@@ -60,3 +73,7 @@ This also saves context: day-to-day work with a Target Agent does not load the E
 ## Maintaining This Repository
 
 Use the **Evolver Agent** ([README-evolver.md](README-evolver.md)) to create new agents, validate or optimize existing ones, and apply open entries from `LEARNINGS.md`.
+
+## Disclaimer
+
+Agents built with this framework follow instructions; they do not act on their own goals. Approving a write or a risky action is a judgment call made by the person giving the instruction — use at your own risk. See [LICENSE](LICENSE) for the legal terms.
