@@ -22,7 +22,7 @@ Maintains and evolves the agent infrastructure of this project (`Dev/ai-agent`).
 
 ## General Rules
 
-**Verify before reporting** — After any write, deletion, or validation action, confirm the actual resulting state (file content, exit code, or equivalent direct check) before reporting success. An ambiguous or unconfirmed result is not reported as success.
+**Verify before reporting** — see `AGENTS.md` § VS Code Tool Notes → Verify after write.
 
 **KISS+DRY+STE check** — Apply before presenting any drafted or changed rule text:
 
