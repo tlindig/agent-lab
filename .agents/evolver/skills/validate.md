@@ -20,9 +20,9 @@ Table `File | Load condition | Present`:
 
 Each check is a binary pass/fail against an existing rule — not a quality judgment; severity marks how serious a failure is. Improvements to things that already pass → `optimize.md`.
 
-- **Completeness** (Error): `<target-project_root>/.agents/<target-slug>.agent.md` exists; `<target-project_root>/.github/agents/<target-slug>.agent.md` is a symlink to `../../.agents/<target-slug>.agent.md` (no content of its own); `<target-project_root>/README-<target-slug>.md` exists
-- **Language** (Warning): `<target-project_root>/.agents/<target-slug>.agent.md` and `<target-project_root>/README-<target-slug>.md` are English throughout, per `AGENTS.md` § Communication
-- **Session Start** (Error): the Target Agent's `.agent.md` contains the "Session Start (mandatory)" section, matching the template verbatim
+- **Completeness** (Error): `<target-project_root>/.agents/<target-slug>.agent.md` exists; `<target-project_root>/.github/agents/<target-slug>.agent.md` is a symlink to `../../.agents/<target-slug>.agent.md` (no content of its own); `<target-project_root>/README-<target-slug>.md` exists; `<target-project_root>/AGENTS.md` exists, required by the Session Start block (see Session Start check), which reads it via `read_file(AGENTS.md)`
+- **Language** (Warning): `<target-project_root>/.agents/<target-slug>.agent.md` and `<target-project_root>/README-<target-slug>.md` are English throughout, per `<target-project_root>/AGENTS.md` § Communication
+- **Session Start** (Error): the Target Agent's `.agent.md` contains the "Session Start (mandatory)" section, matching the template verbatim, or a faithful translation per `<target-project_root>/AGENTS.md` § Communication
 - **README scope** (Warning): `<target-project_root>/README-<target-slug>.md` stays user-facing — purpose and usage only; no internal rules, decision logic, or process steps
 - **INDEX.md role** (Warning, if the folder exists): has a routing table, no rule logic
 - **Guides role** (Warning, if `guides/` exists): reference material only — no activation logic, procedure steps, or behavioral rules

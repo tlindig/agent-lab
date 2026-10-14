@@ -56,10 +56,15 @@ Read `.agents/evolver/templates/INDEX.md` when creating a new Target Agent or it
 
 ## Creating a New Agent
 
-1. Create the canonical file from `.agents/evolver/templates/agent.template.md`: `<target-project_root>/.agents/<target-slug>.agent.md`
-2. Create the symlink for VS Code discovery: `ln -s ../../.agents/<target-slug>.agent.md <target-project_root>/.github/agents/<target-slug>.agent.md`
-3. Create `<target-project_root>/README-<target-slug>.md` from `.agents/evolver/templates/README.template.md`
-4. Add `<target-project_root>/.agents/<target-slug>/skills|guides|templates/INDEX.md` from `.agents/evolver/templates/index.template.md` once needed
+1. If `<target-project_root>/AGENTS.md` does not exist: ask whether to create it as a full copy of `<project_root>/AGENTS.md` or a trimmed version for this project; create it accordingly on confirmation.
+2. Create the canonical file from `.agents/evolver/templates/agent.template.md`: `<target-project_root>/.agents/<target-slug>.agent.md`
+3. Create the symlink for VS Code discovery: `ln -s ../../.agents/<target-slug>.agent.md <target-project_root>/.github/agents/<target-slug>.agent.md`
+4. Create `<target-project_root>/README-<target-slug>.md` from `.agents/evolver/templates/README.template.md`
+5. Add `<target-project_root>/.agents/<target-slug>/skills|guides|templates/INDEX.md` from `.agents/evolver/templates/index.template.md` once needed
+
+## Syncing AGENTS.md Across Target Projects
+
+See `.agents/evolver/skills/sync-agents-md.md`.
 
 ## Validation Discipline
 
