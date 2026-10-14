@@ -2,7 +2,7 @@
 
 ## <Skill/Guide/Template> Map
 
-| Condition            | <Skill/Guide/Template> |
-| -------------------- | ---------------------- |
-| User asks to <do X>  | `<file>.md`            |
-| After <atomic event> | `<file>.md`            |
+| <Condition / Topic / Output>                              | <Skill/Guide/Template> |
+| --------------------------------------------------------- | ---------------------- |
+| <Skills: "User asks to <do X>" or "After <atomic event>"> | `<file>.md`            |
+| <Guides: topic · Templates: output>                       | `<file>.md`            |

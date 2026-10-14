@@ -31,6 +31,7 @@ An agent built and maintained with this framework does exactly what it is suppos
 - Each agent extends this baseline in its own canonical **`.agents/<slug>.agent.md`** — it may concretize the shared rules but never contradict them.
 - A **RERULE gate** re-reads and re-activates the binding rules at session start and on scope changes, so rules stay active even in long sessions.
 - Rule text itself follows **KISS, DRY, STE, and positive instruction**: simple and non-duplicated, short single-idea sentences in active voice, phrased as what to do rather than what not to do — checked systematically via the Evolver Agent's `optimize.md`.
+- Rule files reference files with a root prefix, `<project_root>/…` or `<target-project_root>/…`. The prefix keeps the two roots apart and stops agents from searching with `find` for a file whose location is already clear. Observed in practice; re-test before removing it.
 - Tool-agnostic by design: tried so far with VS Code Copilot, but nothing in the rule files depends on a specific AI harness — any tool that can read project files and follow instructions should work.
 
 ## How a Created Agent Works
@@ -51,6 +52,7 @@ An agent built and maintained with this framework does exactly what it is suppos
 | `.agents/<slug>/skills/`         | Executable step-by-step procedures, loaded on demand                                                |
 | `.agents/<slug>/guides/`         | Static reference material, loaded on demand                                                         |
 | `.agents/<slug>/templates/`      | Fill-in scaffolding structures, no rule logic                                                       |
+| `.agents/<slug>/scripts/`        | Deterministic helper scripts for mechanical checks, run on demand                                   |
 | `LEARNINGS.md`                   | Open findings from sessions, integrated back into the affected agent as a deliberate, separate step |
 
 ### Rules vs. Skills vs. Templates vs. Guides

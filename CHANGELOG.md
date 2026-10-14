@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Skills `create-agent.md` (extracted from `evolver.agent.md`) and `rename-agent.md`.
+- `scripts/validate.py`: runs the mechanical `validate.md` checks read-only; `scripts/` added to the repository structure in `AGENTS.md` and `README.md`.
+- `validate.md`: checks INDEX coverage and Trigger form.
+- `AGENTS.md` VS Code Tool Notes: "File writes" — use the editor tools, not shell writes, so the VS Code diff and undo stay intact.
+- `README.md`: rationale for root-prefixed paths.
+
+### Changed
+
+- Evolver role: creates, analyzes, and optimizes a Target Agent that usually lives in another project (`evolver.agent.md`, `README-evolver.md`).
+- Validation Discipline: every proposal is checked before presentation against `validate.md` and KISS+DRY+STE, using freshly read files; mechanical checks run after writing.
+- `validate.md`: checks grouped into mechanical and review; Language covers all agent files and honors a user-requested language; one Folder roles check replaces the INDEX, Guides, and Templates role checks.
+- `optimize.md`: Pass 5 runs only when changes were applied and ends with `validate.md`.
+- `apply-learnings.md`: processes only entries for the Target Agent's slug.
+- `index.template.md`: the first column is Condition, Topic, or Output by type; `agent.template.md` has no intro sentence.
+- `evolver.agent.md`: full root-prefixed paths; "Switching TargetAgent" replaces "one Target Agent per run".
+
+### Removed
+
+- `validate.md` checks Skill file structure (`## Procedure`), Duplication, Explicit invocation, and Placeholder conventions; their purpose is covered by the DRY check, `optimize.md`, and Trigger form.
+- Redundant sections in `evolver.agent.md`: Syncing AGENTS.md, Applying Learnings, Show-to-user check, Verify before reporting.
+
 ## [0.2.0] - 2026-10-14
 
 ### Added

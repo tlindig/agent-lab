@@ -11,8 +11,6 @@ argument-hint: "<Short prompt hint, e.g. 'What should change in X?'>"
 
 Execute the RERULE gate from `AGENTS.md` — blocking — before taking any other action, including responding to the user's first message. `read_file(AGENTS.md)` is a mandatory tool call; the file already being in context does not satisfy this.
 
-<One or two sentences: what this agent maintains or does.>
-
 ## Responsibilities
 
 - <Concrete responsibility>

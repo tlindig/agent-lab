@@ -2,7 +2,7 @@
 
 ## Procedure
 
-Align `<target-project_root>/AGENTS.md` with this repo's baseline, `<project_root>/AGENTS.md`, while preserving deliberate deviations. Work on exactly one Target Agent per run, per `evolver.agent.md` § Target Agent.
+Align `<target-project_root>/AGENTS.md` with this repo's baseline, `<project_root>/AGENTS.md`, while preserving deliberate deviations. Placeholders: `<project_root>/.agents/evolver.agent.md` § Target Agent.
 
 ### Step 1 — Diff
 
