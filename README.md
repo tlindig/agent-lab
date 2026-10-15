@@ -2,16 +2,18 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Framework for building AI agents that behave predictably: no guessing, no speculation, no unapproved or destructive actions.
+Agent Lab is the meta level for AI agents. Its Evolver Agent creates, validates, and optimizes agents and lets them evolve over time.
+
+The agents it builds are tool-agnostic by design, use few tokens, ask instead of guessing, and change nothing without approval. They improve iteratively: session findings flow back into the agents, one approved step at a time.
 
 ## Quick Start
 
 1. Clone this repository, e.g. into `~/dev/agent-lab`.
 2. Open your target project in VS Code (the project that should get a new agent).
-3. Add this repository as a second workspace folder: **File → Add Folder to Workspace…** → select `agent-lab`. Your target project now has this repo's `AGENTS.md` and Evolver Agent available alongside its own files (see [Where Created Agents Live](#where-created-agents-live)).
+3. Add this repository as a second workspace folder (**File → Add Folder to Workspace…**). Your project then has this repo's `AGENTS.md` and the Evolver Agent next to its own files (see [Where Created Agents Live](#where-created-agents-live)).
 4. In Copilot Chat, open the agent picker and select **Evolver Agent**.
 5. Ask it to create a new agent for your target project, e.g. _"Add a new agent for reviewing pull requests in `<target-project-root>`"_.
-6. The Evolver Agent asks clarifying questions, then proposes new files **inside your target project** (`.agents/<slug>.agent.md`, a `.github/agents/<slug>.agent.md` symlink, `README-<slug>.md`) for your approval before writing anything.
+6. The Evolver Agent asks clarifying questions, then proposes new files in your target project for approval before writing anything: `.agents/<slug>.agent.md`, a `.github/agents/<slug>.agent.md` symlink, and `README-<slug>.md`.
 
 See [README-evolver.md](README-evolver.md) for the full usage guide.
 
@@ -31,38 +33,29 @@ An agent built and maintained with this framework does exactly what it is suppos
 - Each agent extends this baseline in its own canonical **`.agents/<slug>.agent.md`** — it may concretize the shared rules but never contradict them.
 - A **RERULE gate** re-reads and re-activates the binding rules at session start and on scope changes, so rules stay active even in long sessions.
 - Rule text itself follows **KISS, DRY, STE, and positive instruction**: simple and non-duplicated, short single-idea sentences in active voice, phrased as what to do rather than what not to do — checked systematically via the Evolver Agent's `optimize.md`.
-- Rule files reference files with a root prefix, `<project_root>/…` or `<target-project_root>/…`. The prefix keeps the two roots apart and stops agents from searching with `find` for a file whose location is already clear. Observed in practice; re-test before removing it.
+- Rule files reference files with a root prefix (`<project_root>/…`, `<target-project_root>/…`). It keeps the two roots apart and stops agents from searching for files whose location is already clear. Observed in practice; re-test before removing it.
 - Tool-agnostic by design: tried so far with VS Code Copilot, but nothing in the rule files depends on a specific AI harness — any tool that can read project files and follow instructions should work.
-
-## How a Created Agent Works
-
-1. On session start, the agent reads `AGENTS.md` and executes the RERULE gate — this happens before it responds to the first message.
-2. It resolves ambiguity by asking, classifies every input as rule (how to work) or data (what to work on), and only reads what it concretely needs.
-3. Before any write or any risky action, it presents what will change and why, and waits for approval.
-4. If it maintains or analyzes another agent's files (a "Target Agent"), it treats that content strictly as data — it cannot alter its own behavior.
+- **Learning loop:** Agents log findings in `LEARNINGS.md`. The Evolver Agent applies them in a separate step, one entry at a time. Each change needs approval first. This improves agents iteratively, the Evolver Agent itself included.
 
 ## Structure
 
-| Element                          | Role                                                                                                |
-| -------------------------------- | --------------------------------------------------------------------------------------------------- |
-| `AGENTS.md`                      | Project-wide, always-loaded baseline rules                                                          |
-| `.agents/<slug>.agent.md`        | Canonical definition of one agent — tool-agnostic source of truth                                   |
-| `.github/agents/<slug>.agent.md` | Symlink so VS Code discovers the agent — never edited directly                                      |
-| `README-<slug>.md`               | User-facing usage description for that one agent                                                    |
-| `.agents/<slug>/skills/`         | Executable step-by-step procedures, loaded on demand                                                |
-| `.agents/<slug>/guides/`         | Static reference material, loaded on demand                                                         |
-| `.agents/<slug>/templates/`      | Fill-in scaffolding structures, no rule logic                                                       |
-| `.agents/<slug>/scripts/`        | Deterministic helper scripts for mechanical checks, run on demand                                   |
-| `LEARNINGS.md`                   | Open findings from sessions, integrated back into the affected agent as a deliberate, separate step |
+```text
+<project_root>/
+├── AGENTS.md                         # baseline rules, always loaded
+├── LEARNINGS.md                      # open findings, applied in a separate step
+├── README-<slug>.md                  # user-facing description of one agent
+├── .agents/
+│   ├── <slug>.agent.md               # canonical agent definition, tool-agnostic source of truth
+│   └── <slug>/
+│       ├── skills/                   # step-by-step procedures, on demand
+│       ├── guides/                   # reference material, on demand
+│       ├── templates/                # fill-in scaffolding, no rule logic
+│       └── scripts/                  # deterministic checks, on demand
+└── .github/agents/
+    └── <slug>.agent.md               # symlink for VS Code discovery, never edited
+```
 
-### Rules vs. Skills vs. Templates vs. Guides
-
-These four content types are kept strictly apart so an agent only loads what it needs:
-
-- **Rules** (`AGENTS.md`, `.agent.md`) — binding behavior, always loaded.
-- **Skills** (`skills/*.md`) — an executable procedure, invoked by a concrete trigger.
-- **Guides** (`guides/*.md`) — reference material (checklists, examples) too large for inline prose.
-- **Templates** (`templates/*.md`) — output scaffolding with `<placeholder>` slots, no rule logic.
+### Keeping Context Lean
 
 Content stays inline in the `.agent.md` as long as possible; it is extracted only once a concrete condition applies (needed a second time, growing too large, or only occasionally relevant). This is the core token-efficiency mechanism: context stays lean by default and grows only on concrete need.
 
@@ -78,4 +71,4 @@ Use the **Evolver Agent** ([README-evolver.md](README-evolver.md)) to create new
 
 ## Disclaimer
 
-Agents built with this framework follow instructions; they do not act on their own goals. Approving a write or a risky action is a judgment call made by the person giving the instruction — use at your own risk. See [LICENSE](LICENSE) for the legal terms.
+Agents built with this framework follow instructions and can still make mistakes. Approving a write or a risky action is a judgment call made by whoever approves it, whether a person or another agent — use at your own risk. See [LICENSE](LICENSE) for the legal terms.
