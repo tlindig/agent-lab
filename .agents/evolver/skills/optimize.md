@@ -28,7 +28,7 @@ Run the passes below in order. For each pass: analyze, present findings, wait fo
 Redundancy can point in different directions — resolve toward the authoritative source:
 
 - Repeated within the Target Agent's own files (`.agent.md` vs. a skill/guide) → determine the authoritative source, others reference it.
-- Repeated across multiple agents → move it to `<target-project_root>/AGENTS.md`, **except** the "Session Start (mandatory)" block: it is intentionally duplicated verbatim in every `.agent.md`, because passively loaded context is often not actively applied — the entry-point copy is what enforces it.
+- Repeated across multiple agents → move it to `<target-project_root>/AGENTS.md`, **except** the "Session Start (mandatory)" block: it is intentionally repeated in every `.agent.md`, because passively loaded context is often not actively applied — the entry-point copy is what enforces it.
 - Repeated across multiple skills of the Target Agent → extract into a guide, referenced by each skill.
 - **Paraphrase duplication:** the same fact stated in different wording in two places is still a duplicate — check meaning, not just string match.
 - **Structural redundancy:** a summary that fully restates an always-co-loaded artifact has no standalone value — remove it, keep the actual source.
@@ -37,7 +37,7 @@ Redundancy can point in different directions — resolve toward the authoritativ
 
 ### Pass 4 — Economy
 
-- **Unnecessary verbosity** — for each rule, ask: would removing it cause a mistake? Check against `<project_root>/.agents/evolver.agent.md` § Writing Style.
+- **Unnecessary verbosity** — for each passage, ask: would removing it cause a mistake? Check against `<project_root>/.agents/evolver.agent.md` § Writing Style.
 - **Over-emphasis:** more than one or two emphasized rules (bold, "IMPORTANT") in one file. Keep emphasis sparse.
 - **Negative phrasing** — check against `<project_root>/.agents/evolver.agent.md` § General Rules → Write rules as positive instructions.
 - **Extraction candidates** per "When to Extract Skills/Guides/Templates" in `<project_root>/.agents/evolver.agent.md`.

@@ -2,7 +2,14 @@
 
 ## <Skill/Guide/Template> Map
 
-| <Condition / Topic / Output>                              | <Skill/Guide/Template> |
-| --------------------------------------------------------- | ---------------------- |
-| <Skills: "User asks to <do X>" or "After <atomic event>"> | `<file>.md`            |
-| <Guides: topic · Templates: output>                       | `<file>.md`            |
+Skills (keep only the block that applies). Run a skill on user request, or when a procedure or rule references it, in the order that procedure gives.
+
+| Skill       | Purpose                                                                                                                  |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `<file>.md` | <One-line purpose. Add a "use when" or exclusion clause only if needed. Mark "Internal" if only invoked by reference.> |
+
+Guides and Templates (keep only the block that applies).
+
+| <Guides: topic · Templates: output> | <Guide/Template> |
+| ----------------------------------- | ---------------- |
+| <Guides: topic · Templates: output> | `<file>.md`      |

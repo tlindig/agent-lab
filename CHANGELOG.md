@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-10-15
+
+### Added
+
+- `create-agent.md` creates a missing `LEARNINGS.md` in the target project from this repo's title and entry-format comment; `validate.md` checks that it exists.
+
+### Changed
+
+- `LEARNINGS.md`: new header with an entry-format comment (`Observed` / `Expected` / `Improvement`).
+- `apply-learnings.md`: reads and edits `<target-project_root>/LEARNINGS.md`.
+- `AGENTS.md`: tool-agnostic RERULE read step and Session Start wording; new Tool Use rule (shell only when no tool applies); corrected the hidden-directory note, since `grep_search` and `file_search` do find them.
+- `validate.md`: the Session Start check applies only if the target project's `AGENTS.md` defines a RERULE gate and accepts free wording; the Trigger form check became a Skill index form check.
+- `evolver.agent.md`, `skills/INDEX.md`, `index.template.md`: Skill Map rows describe a skill by purpose instead of a trigger; skills that only other skills invoke are marked Internal; the index states once when to run a skill.
+- `evolver.agent.md`: Validation Discipline requires a reference search before a proposal removes or renames a section, heading, or file; each hit is listed in the proposal and updated in the same change.
+- `optimize.md`: the Pass 4 verbosity check applies to every passage, not only to rules.
+- `AGENTS.md`: the Action gate requires the concrete information or result an action should deliver, not only the action and its reason.
+- `validate.md`: Completeness checks only that `<target-project_root>/.github/agents/<target-slug>.agent.md` exists, not its symlink target; Path resolution also exempts template names from a Template Map and generic file names.
+- `.gitignore`: ignores `*.code-workspace`.
+
+### Removed
+
+- `scripts/validate.py`: the mechanical `validate.md` checks are run by reading the files, so validation needs no script execution.
+
 ## [0.3.0] - 2026-10-15
 
 ### Added
