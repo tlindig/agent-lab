@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-10-16
+
 ### Added
 
 - `extend-agent.md`: adds a skill, guide, or template to a Target Agent, creates a missing folder `INDEX.md`, and registers the file; `create-agent.md` step 7 refers to it.
@@ -14,12 +16,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - `apply-learnings.md`: clusters entries by root problem, classifies scope (Target Agent domain or `AGENTS.md`), and routes generic fixes to `<target-project_root>/AGENTS.md` with an optional baseline-candidate entry.
-- `sync-agents-md.md`: compares in both directions, writes only to the target; target-only improvements become baseline-candidate entries.
+- `sync-agents-md.md`: compares in both directions, writes only to the target; target-only improvements become baseline-candidate entries. `evolver.agent.md` offers it once per session when work starts on a Target Agent in another project.
 - `create-agent.md`: asks for domain, workflow, and external systems with their MCP tools; adds the new agent to the target project's `README.md` if it lists agents.
-- `AGENTS.md` VS Code Tool Notes: "Verify after write" became "Post-write verification" and requires the verifying read in a separate call after the write completes; file deletion via `rm`; three tool facts (`.gitignore` skipping, declared workspace folders only, `read_file` outside the workspace). `evolver.agent.md` references the new name.
-- `AGENTS.md`: Write gate gains a self-correction exception (replaces the correction clause of Post-write verification); new invariant to track open self-asked questions, restated in RERULE step 5; Options gate checks for options joined by "or"; new KISS and DRY sections.
-- `AGENTS.md` Placeholder Conventions: states the template notation (`<...>` scaffolding, `[...]` output, bare `<...>` for compact identifiers). `validate.md` Folder roles: guides may state requirements on artifacts but hold no instructions to the agent; templates follow the notation of the target project's `AGENTS.md`.
-- `evolver.agent.md`: the reference search before removing, renaming, or moving a section covers plain names and path-form references; § Skills offers `sync-agents-md.md` once per session when work starts on a Target Agent in another project.
+- `AGENTS.md`: Write gate gains a self-correction exception; new invariant to track open self-asked questions, restated in RERULE step 5; Options gate checks for options joined by "or"; new KISS and DRY sections; "Verify after write" became "Post-write verification" with a separate verifying read; file deletion via `rm`; three tool facts (`.gitignore` skipping, declared workspace folders only, `read_file` outside the workspace); Placeholder Conventions state the template notation (`<...>` scaffolding, `[...]` output, bare `<...>` for compact identifiers).
+- `validate.md`: Folder roles: guides may state requirements on artifacts but hold no instructions to the agent; templates follow the notation of the target project's `AGENTS.md`.
+- `evolver.agent.md`: the reference search before removing, renaming, or moving a section covers plain names and path-form references.
 - `optimize.md`: each finding is presented as a Write-gate proposal: why it makes sense, then the concrete before/after text.
 
 ## [0.4.0] - 2026-10-15
