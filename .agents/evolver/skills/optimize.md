@@ -8,7 +8,7 @@ Placeholders: `<project_root>/.agents/evolver.agent.md` § Target Agent.
 
 Read every file for this Target Agent (see `validate.md` Step 1's File Map) before Pass 1.
 
-Run the passes below in order. For each pass: analyze, present findings, wait for confirmation, apply confirmed changes, then proceed to the next pass so it sees the corrected state.
+Run the passes below in order. For each pass: analyze, present each finding as a proposal (Write gate: why it makes sense, then the concrete before/after text), wait for confirmation, apply confirmed changes, then proceed to the next pass so it sees the corrected state.
 
 ### Pass 1 — Structural Integrity (baseline)
 
@@ -29,7 +29,7 @@ Redundancy can point in different directions — resolve toward the authoritativ
 
 - Repeated within the Target Agent's own files (`.agent.md` vs. a skill/guide) → determine the authoritative source, others reference it.
 - Repeated across multiple agents → move it to `<target-project_root>/AGENTS.md`, **except** the "Session Start (mandatory)" block: it is intentionally repeated in every `.agent.md`, because passively loaded context is often not actively applied — the entry-point copy is what enforces it.
-- Repeated across multiple skills of the Target Agent → extract into a guide, referenced by each skill.
+- Repeated across multiple skills of the Target Agent → extract into a guide with `extend-agent.md`, referenced by each skill.
 - **Paraphrase duplication:** the same fact stated in different wording in two places is still a duplicate — check meaning, not just string match.
 - **Structural redundancy:** a summary that fully restates an always-co-loaded artifact has no standalone value — remove it, keep the actual source.
 - **Executor restating criteria:** when a skill executes checks defined elsewhere, verify each step is a pointer, not a restatement of that content.
@@ -40,7 +40,7 @@ Redundancy can point in different directions — resolve toward the authoritativ
 - **Unnecessary verbosity** — for each passage, ask: would removing it cause a mistake? Check against `<project_root>/.agents/evolver.agent.md` § Writing Style.
 - **Over-emphasis:** more than one or two emphasized rules (bold, "IMPORTANT") in one file. Keep emphasis sparse.
 - **Negative phrasing** — check against `<project_root>/.agents/evolver.agent.md` § General Rules → Write rules as positive instructions.
-- **Extraction candidates** per "When to Extract Skills/Guides/Templates" in `<project_root>/.agents/evolver.agent.md`.
+- **Extraction candidates** per "When to Extract Skills/Guides/Templates" in `<project_root>/.agents/evolver.agent.md`. Apply each confirmed candidate with `extend-agent.md`.
 - **Structure vs. precision trade-off:** only shorten if the Target Agent can still act correctly from the reduced form; prefer lookup tables over prose for parameter mappings.
 
 ### Pass 5 — Re-validation

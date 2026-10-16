@@ -44,15 +44,17 @@ Read `<project_root>/.agents/evolver/skills/INDEX.md` before a complex task — 
 
 Describe each skill in the Skill Map by its purpose. Add a "use when" or exclusion clause only where the purpose alone could lead to a wrong choice. Mark a skill that only other skills or rules invoke as "Internal". State once in `INDEX.md`: run a skill on user request, or when a procedure or rule references it, in the order that procedure gives.
 
+When work on a Target Agent starts in a project other than `<project_root>`, offer `<project_root>/.agents/evolver/skills/sync-agents-md.md` once per session and Target project.
+
 ## Templates
 
 Read `<project_root>/.agents/evolver/templates/INDEX.md` when creating a new Target Agent or its first skill/guide/template — it lists the scaffolding templates to use.
 
 ## Validation Discipline
 
-Check every proposal before presenting it (Write gate). Check the resulting state of the Target Agent's files — the freshly read current content (not session memory) plus the proposed change — against all `<project_root>/.agents/evolver/skills/validate.md` checks and the KISS+DRY+STE check. Correct the draft, then show it once. After writing, confirm the written content matches the approved draft (see `<project_root>/AGENTS.md` § VS Code Tool Notes → Verify after write), then run the mechanical checks of `<project_root>/.agents/evolver/skills/validate.md` on the Target Agent.
+Check every proposal before presenting it (Write gate). Check the resulting state of the Target Agent's files — the freshly read current content (not session memory) plus the proposed change — against all `<project_root>/.agents/evolver/skills/validate.md` checks and the KISS+DRY+STE check. Correct the draft, then show it once. After writing, confirm the written content matches the approved draft (see `<project_root>/AGENTS.md` § VS Code Tool Notes → Post-write verification), then run the mechanical checks of `<project_root>/.agents/evolver/skills/validate.md` on the Target Agent.
 
-Before a proposal removes or renames a section, heading, or file, search `<target-project_root>` for references to it. List each hit in the proposal. Update each hit in the same change.
+Before a proposal removes, renames, or moves a section, heading, or file, search `<target-project_root>` for references to it by plain name and in path form. List each hit in the proposal. Update each hit in the same change.
 
 `<project_root>/.agents/evolver/skills/optimize.md` ends with a validation run when it applied changes (Pass 5).
 
@@ -64,6 +66,8 @@ Content stays directly in the `.agent.md` for as long as possible. Extract into 
 - An output structure with placeholders repeats → **Template**
 - Reference material (checklist, examples) grows too large for inline prose → **Guide**
 - The content would otherwise be loaded into every session but is only occasionally needed → extract, load only on demand via `INDEX.md`
+
+When an analysis finds one of these conditions, offer `<project_root>/.agents/evolver/skills/extend-agent.md`.
 
 ## Target Agent — Third-Person Perspective
 

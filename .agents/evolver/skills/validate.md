@@ -33,7 +33,7 @@ Each check is a pass/fail against an existing rule — not an improvement idea; 
 
 - **Language** (Warning): `<target-project_root>/.agents/<target-slug>.agent.md`, `<target-project_root>/README-<target-slug>.md`, and every file below `<target-project_root>/.agents/<target-slug>/` are English, per `<target-project_root>/AGENTS.md` § Communication, unless the user requested another language for that file
 - **README scope** (Warning): `<target-project_root>/README-<target-slug>.md` stays user-facing — purpose and usage only; no internal rules, decision logic, or process steps
-- **Folder roles** (Warning, per existing folder): `INDEX.md` has a routing table and no rule logic; skills hold executable steps, not reference material; guides hold reference material only — no activation logic, procedure steps, or behavioral rules; templates use `<...>` placeholders and no rule logic
+- **Folder roles** (Warning, per existing folder): `INDEX.md` has a routing table and no rule logic; skills hold executable steps, not reference material; guides hold reference material — they may state requirements on artifacts (what an output must contain) but hold no instructions to the agent (when to act, whom to ask, which step follows); templates follow the placeholder notation of `<target-project_root>/AGENTS.md` § Placeholder Conventions and hold no rule logic
 
 ### Step 3 — Report
 

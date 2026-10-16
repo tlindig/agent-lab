@@ -12,8 +12,8 @@ The agents it builds are tool-agnostic by design, use few tokens, ask instead of
 2. Open your target project in VS Code (the project that should get a new agent).
 3. Add this repository as a second workspace folder (**File → Add Folder to Workspace…**). Your project then has this repo's `AGENTS.md` and the Evolver Agent next to its own files (see [Where Created Agents Live](#where-created-agents-live)).
 4. In Copilot Chat, open the agent picker and select **Evolver Agent**.
-5. Ask it to create a new agent for your target project, e.g. _"Add a new agent for reviewing pull requests in `<target-project-root>`"_.
-6. The Evolver Agent asks clarifying questions, then proposes new files in your target project for approval before writing anything: `.agents/<slug>.agent.md`, a `.github/agents/<slug>.agent.md` symlink, and `README-<slug>.md`.
+5. Ask it to create a new agent for your target project, e.g. _"Add a new agent for reviewing pull requests in `<target-project_root>`"_.
+6. The Evolver Agent asks clarifying questions, then proposes new files in your target project for approval before writing anything: `.agents/<slug>.agent.md`, a `.github/agents/<slug>.agent.md` symlink, and `README-<slug>.md`, plus an entry in the project's `README.md` if it lists agents.
 
 See [README-evolver.md](README-evolver.md) for the full usage guide.
 
@@ -35,7 +35,7 @@ An agent built and maintained with this framework does exactly what it is suppos
 - Rule text itself follows **KISS, DRY, STE, and positive instruction**: simple and non-duplicated, short single-idea sentences in active voice, phrased as what to do rather than what not to do — checked systematically via the Evolver Agent's `optimize.md`.
 - Rule files reference files with a root prefix (`<project_root>/…`, `<target-project_root>/…`). It keeps the two roots apart and stops agents from searching for files whose location is already clear. Observed in practice; re-test before removing it.
 - Tool-agnostic by design: tried so far with VS Code Copilot, but nothing in the rule files depends on a specific AI harness — any tool that can read project files and follow instructions should work.
-- **Learning loop:** Agents log findings in `LEARNINGS.md`. The Evolver Agent applies them in a separate step, one entry at a time. Each change needs approval first. This improves agents iteratively, the Evolver Agent itself included.
+- **Learning loop:** Agents log findings in `LEARNINGS.md`. The Evolver Agent applies them in a separate step, cluster by cluster. Each change needs approval first. This improves agents iteratively, the Evolver Agent itself included.
 
 ## Structure
 
