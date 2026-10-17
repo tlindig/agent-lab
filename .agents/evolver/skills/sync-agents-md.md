@@ -2,7 +2,7 @@
 
 ## Procedure
 
-Compare `<target-project_root>/AGENTS.md` with this repo's baseline, `<project_root>/AGENTS.md`, in both directions, while preserving deliberate deviations. Write only to the target. Placeholders: `<project_root>/.agents/evolver.agent.md` § Target Agent.
+Compare `<target-project_root>/AGENTS.md` with this repo's baseline, `<project_root>/AGENTS.md`, in both directions, while preserving deliberate deviations.
 
 ### Step 1 — Diff
 

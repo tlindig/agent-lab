@@ -2,10 +2,10 @@
 
 ## Procedure
 
-Placeholders: `<project_root>/.agents/evolver.agent.md` § Target Agent. `<target-slug>` and `<Target Agent Name>` are the old identifiers; `<new-slug>` and `<New Agent Name>` are the new ones.
+`<target-slug>` and `<Target Agent Name>` are the old identifiers; `<new-slug>` and `<New Agent Name>` are the new ones.
 
 1. Ask for `<new-slug>` and `<New Agent Name>`; confirm `<target-project_root>`.
-2. Find every occurrence of the old slug and display name: `grep -rniI --exclude-dir=.git -e "<target-slug>" -e "<Target Agent Name>" <target-project_root>`. Review each hit — a word that is also an ordinary word needs a judgment, not a blind replace.
+2. Find every occurrence of the old slug and display name: `grep -rniI --exclude-dir=.git -e "<target-slug>" -e "<Target Agent Name>" <target-project_root>`. Review each hit — a word that is also an ordinary word needs a judgment.
 3. Present the change set (Write gate):
    - Move `<target-project_root>/.agents/<target-slug>.agent.md`, `<target-project_root>/.agents/<target-slug>/`, and `<target-project_root>/README-<target-slug>.md` to the new slug.
    - Recreate the symlink `<target-project_root>/.github/agents/<target-slug>.agent.md` for the new slug.

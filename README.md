@@ -35,7 +35,7 @@ An agent built and maintained with this framework does exactly what it is suppos
 - Rule text itself follows **KISS, DRY, STE, and positive instruction**: simple and non-duplicated, short single-idea sentences in active voice, phrased as what to do rather than what not to do — checked systematically via the Evolver Agent's `optimize.md`.
 - Rule files reference files with a root prefix (`<project_root>/…`, `<target-project_root>/…`). It keeps the two roots apart and stops agents from searching for files whose location is already clear. Observed in practice; re-test before removing it.
 - Tool-agnostic by design: tried so far with VS Code Copilot, but nothing in the rule files depends on a specific AI harness — any tool that can read project files and follow instructions should work.
-- **Learning loop:** Agents log findings in `LEARNINGS.md`. The Evolver Agent applies them in a separate step, cluster by cluster. Each change needs approval first. This improves agents iteratively, the Evolver Agent itself included.
+- **Learning loop:** Agents log findings in `LEARNINGS.md` and propose improvements themselves. The Evolver Agent applies them in a separate step, cluster by cluster. Each change needs approval first. This improves agents iteratively, the Evolver Agent itself included.
 
 ## Structure
 
@@ -45,6 +45,7 @@ An agent built and maintained with this framework does exactly what it is suppos
 ├── LEARNINGS.md                      # open findings, applied in a separate step
 ├── README-<slug>.md                  # user-facing description of one agent
 ├── .agents/
+│   ├── shared/                       # resources used by two or more agents: guides/, templates/, scripts/
 │   ├── <slug>.agent.md               # canonical agent definition, tool-agnostic source of truth
 │   └── <slug>/
 │       ├── skills/                   # step-by-step procedures, on demand
@@ -58,6 +59,16 @@ An agent built and maintained with this framework does exactly what it is suppos
 ### Keeping Context Lean
 
 Content stays inline in the `.agent.md` as long as possible; it is extracted only once a concrete condition applies (needed a second time, growing too large, or only occasionally relevant). This is the core token-efficiency mechanism: context stays lean by default and grows only on concrete need.
+
+## Relation to Open Standards
+
+- **AGENTS.md:** The baseline rules use the [AGENTS.md](https://agents.md/) format, a plain-Markdown convention that many coding agents read.
+- **Agent Skills:** Skills, guides, and templates are inspired by [Agent Skills](https://agentskills.io/). Both load detail only when a task needs it. Agent Lab does not follow the format and differs on purpose:
+  - By default, a skill belongs to one agent. An agent is a role and a skill is one of its abilities. The same ability can differ by role: "update ticket" reads a GitHub issue for one agent and a Jira ticket for another. Separate skills avoid a switch inside one shared skill and keep each agent's context small.
+  - Overlap between agents is not solved by sharing the skill. Knowledge that several agents need is shared in `.agents/shared/`. A capability that belongs to another agent's role is delegated to that agent, not copied.
+  - The agent loads a skill through its `INDEX.md`. A client does not discover it from frontmatter. A skill is of no use without its agent, so automatic loading is not wanted.
+  - Activation conditions stand only in `INDEX.md`. A skill that another procedure calls runs even if its own conditions would not cover the case.
+  - As a result, clients that scan for `SKILL.md` files do not find these skills.
 
 ## Where Created Agents Live
 

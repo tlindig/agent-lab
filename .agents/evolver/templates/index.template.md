@@ -6,7 +6,7 @@ Skills (keep only the block that applies). Run a skill on user request, or when 
 
 | Skill       | Purpose                                                                                                                  |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------ |
-| `<file>.md` | <One-line purpose. Add a "use when" or exclusion clause only if needed. Mark "Internal" if only invoked by reference.> |
+| `<file>.md` | <One-line purpose, per `<project_root>/.agents/evolver.agent.md` § Skills.> |
 
 Guides and Templates (keep only the block that applies).
 

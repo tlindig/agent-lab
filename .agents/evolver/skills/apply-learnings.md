@@ -6,6 +6,7 @@
 2. Classify the scope of each entry. The heading slug names where the incident happened, not where the fix belongs.
    - Problem specific to the Target Agent's domain → `<target-project_root>/.agents/<target-slug>.agent.md` and its skills, guides, templates.
    - Generic tool or infrastructure concern → `<target-project_root>/AGENTS.md`. Read it and `<project_root>/AGENTS.md` first. If only the baseline holds the rule, the fix is a sync (`sync-agents-md.md`), not a new rule.
+   - Skill candidate (a procedure to extract) → `extend-agent.md`.
 3. Cluster the entries by root problem and affected files. Present the clusters with rationale. Wait for confirmation.
 
 For each cluster, in confirmed order:

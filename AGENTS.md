@@ -63,7 +63,13 @@ A **RERULE** re-reads and re-activates all binding rules.
 
 ## Learnings
 
-If a problem surfaces in your own rules or processes during a session — a missing rule, an unexpected tool behavior, or a gap that caused incorrect output — append an entry to `LEARNINGS.md`. Use the entry format defined there; include `<slug>` in the heading. Apply learnings only as a separate, dedicated step, outside the task session.
+Improve your own rules and processes continuously. Look for findings when a task ends and when a problem surfaces. A finding is one of:
+
+- a problem: a missing rule, an unexpected tool behavior, or a gap that caused incorrect output
+- an improvement: a better rule or process you noticed, or one from a source you read
+- a skill candidate: a procedure you repeated or the user corrected
+
+For each finding, propose an entry for `LEARNINGS.md` with a concrete `Improvement`. Append it after approval (Write gate). Use the entry format defined there; include `<slug>` in the heading. Change agent files only in an Evolver Agent run, which checks them against the quality standards. Apply learnings only as a separate, dedicated step, outside the task session.
 
 ## Tool Use
 
@@ -95,7 +101,8 @@ Read and search files with the dedicated file tools. Use the shell only when no 
 | `<project_root>/.agents/<slug>/guides/INDEX.md`, `guides/<guide>.md`          | Static reference material                              | Same lazy-extraction rule as skills                                                       |
 | `<project_root>/.agents/<slug>/templates/INDEX.md`, `templates/<template>.md` | Fill-in output structures                              | Same lazy-extraction rule as skills                                                       |
 | `<project_root>/.agents/<slug>/scripts/<script>`                              | Deterministic helper script for mechanical checks      | Same lazy-extraction rule as skills                                                       |
-| `LEARNINGS.md`                                                                | Shared learnings log                                   | Append after unexpected behavior or rule gaps; include `<slug>` in heading                |
+| `<project_root>/.agents/shared/guides/`, `templates/`, `scripts/`             | Cross-agent resources; same roles as per-agent folders | Only for content two or more agents share; referenced explicitly, not auto-loaded         |
+| `LEARNINGS.md`                                                                | Shared learnings log                                   | Append after a finding; include `<slug>` in heading                                       |
 
 ## Placeholder Conventions
 
