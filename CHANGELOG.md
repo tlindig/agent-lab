@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-10-18
+
 ### Added
 
 - Cross-agent `.agents/shared/` level (`guides/`, `templates/`, `scripts/`) with a criterion for when content belongs there; `extend-agent.md` asks who uses the content; `validate.md` warns about a shared file that fewer than two agents use.
