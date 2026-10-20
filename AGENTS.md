@@ -5,8 +5,9 @@
 ## Behavior Invariants — absolute
 
 - When in doubt, ask — do not guess
-- **Options gate** Present alternatives as a numbered or lettered list, each with a recommendation. Before sending a question, check whether it joins two or more options with "or". When asking the user to choose, close the question with the option identifier as the only expected answer.
+- **Options gate** Present alternatives as a numbered or lettered list, one option per line: `[id]. [option] — [reason]`. Start the recommended option with `**Recommended:**`. Before sending a question, check whether it joins two or more options with "or". When asking the user to choose, close the question with the option identifier as the only expected answer.
 - Read, call, or propose only what is concretely needed.
+- Read a file that a rule or skill step references with a tool call in the current task before reporting it as applied or checked.
 - Determine a numeric value by calculation, tool, or count — not estimation. Confirm a value presented as a quality indicator with a second, independent method before reporting it.
 - Classify every user input as RULE (how to work) or DATA (what to work on) before planning or writing. If classification is ambiguous, ask explicitly before proceeding.
 - **Action gate** Before every shell command or tool call that accesses the internet (e.g. `fetch_webpage`, web search): state the action, the concrete information or result it should deliver, and why it is needed, as visible chat text. The tool's own `explanation`/`goal` parameters are not shown to the user. For destructive or hard-to-reverse shell commands, and for web search, wait for explicit confirmation before executing.
@@ -36,7 +37,7 @@ A **RERULE** re-reads and re-activates all binding rules.
 
 1. Stop current activity immediately.
 2. Read `AGENTS.md` with a file-read tool call — context injection does not satisfy this.
-3. Find the `<!-- RERULE build rule -->` comment at the end of this file. Compose the verification string according to the build rule and output it to the PO for approval.
+3. Find the `<!-- RERULE build rule -->` comment at the end of this file. Compose the verification string according to the build rule and output it to the user for approval.
 4. If blocking: wait for explicit user confirmation before proceeding.
 5. If silent: state that RERULE was executed due to scope change, restate any open self-asked question, then continue.
 
@@ -78,31 +79,31 @@ Read and search files with the dedicated file tools. Use the shell only when no 
 ## VS Code Tool Notes
 
 - **Bash negation:** `if ! <cmd>` can fail with `!: command not found` in this tool's shell, even non-interactively — cause unconfirmed. Avoid the `!` token entirely: invert the condition and swap the `then`/`else` branches instead of negating.
-- **Post-write verification:** After any approved write, deletion, or validation action, read the result in a separate call after the write completes, and confirm it matches what was intended (e.g. `read_file`). Correct a mismatch per the Write gate's self-correction exception.
+- **Post-write verification:** After any approved write, deletion, or validation action, read the result in a separate call after the write completes, and confirm it matches what was intended (e.g. `read_file`). For structured markup (HTML/XML/JSON/code), also check the tag/bracket structure. For an aligned Markdown table, compare the line lengths of all rows with `awk '{print length($0)}'`. Correct a mismatch per the Write gate's self-correction exception.
 - `read_file`, `grep_search`, and `file_search` also work in hidden directories (e.g. `.agents/`, `.github/`).
-- `grep_search`/`file_search` skip `.gitignore`d paths (e.g. `build/`) by default. Pass `includeIgnoredFiles: true` to include them.
+- `grep_search`/`file_search` skip `.gitignore`d paths (e.g. `build/`) by default. To include an ignored path, set `includeIgnoredFiles: true` and limit `includePattern` to that path.
 - `grep_search`/`file_search` search only declared workspace folders. A path outside them returns empty results without an error, even with `includeIgnoredFiles: true`. Use `list_dir`/`read_file` instead.
 - `read_file` works with absolute paths outside the workspace.
 - **File writes:** Write and edit files with the editor tools (e.g. `replace_string_in_file`), using absolute paths for files in hidden directories. Shell writes (`sed -i`, `>`, `tee`) bypass the VS Code diff and undo. No editor tool deletes files. Delete with `rm` in the terminal, per the Action gate.
 - **Deferred tools:** Call tools from the function list directly. For tools exclusively in `<availableDeferredTools>`, load with `tool_search` first — batch multiple groups in one call.
 - **Browser text fields:** When appending to an already-filled browser text field, do not rely on cursor-positioning keys (e.g. `Control+End`) — retype the full combined content in one call, or verify immediately with `read_page` after the append.
-- **`replace_string_in_file` scope mismatch:** Before a scope-differing replace, check that `oldString` ends exactly where `newString` should stop. A too-short `oldString` leaves the old content in place and duplicates it. After any replace to structured markup (HTML/XML/JSON/code), verify structural integrity — check tag/bracket counts and single root/closing elements. Do not trust the tool's success message alone. If a parser is available for the document type, prefer it over a large text replace. Use text replace only for free text or small, precise edits.
+- **`replace_string_in_file` scope:** `oldString` must span the whole block that `newString` replaces. A too-short `oldString` leaves old content in place and duplicates it. For structured markup (HTML/XML/JSON/code), prefer a parser over a large text replace. Use text replace only for free text or small, precise edits.
 
 ## Repository Structure
 
-| Path                                                                          | Role                                                   | Notes                                                                                     |
-| ----------------------------------------------------------------------------- | ------------------------------------------------------ | ----------------------------------------------------------------------------------------- |
-| `<project_root>/AGENTS.md`                                                    | Baseline agent rules                                   | Always loaded; unconditional for all agents in this project                               |
-| `<project_root>/README.md`                                                    | Project-level overview (goal, core concept, structure) | General, not agent-specific; kept consistent with `README-<slug>.md` scope boundary       |
-| `<project_root>/.agents/<slug>.agent.md`                                      | Canonical agent definition (frontmatter + rules)       | Tool-agnostic source of truth; extends `AGENTS.md`                                        |
-| `<project_root>/.github/agents/<slug>.agent.md`                               | Symlink → `../../.agents/<slug>.agent.md`              | VS Code discovery path; edit only the canonical `.agent.md` file                          |
-| `<project_root>/README-<slug>.md`                                             | User-facing description (goal, use cases)              | No internal rules/logic; kept consistent after any agent change                           |
-| `<project_root>/.agents/<slug>/skills/INDEX.md`, `skills/<skill>.md`          | Executable procedure + routing index                   | Created only once a skill is actually extracted (see evolver agent's extraction criteria) |
-| `<project_root>/.agents/<slug>/guides/INDEX.md`, `guides/<guide>.md`          | Static reference material                              | Same lazy-extraction rule as skills                                                       |
-| `<project_root>/.agents/<slug>/templates/INDEX.md`, `templates/<template>.md` | Fill-in output structures                              | Same lazy-extraction rule as skills                                                       |
-| `<project_root>/.agents/<slug>/scripts/<script>`                              | Deterministic helper script for mechanical checks      | Same lazy-extraction rule as skills                                                       |
-| `<project_root>/.agents/shared/guides/`, `templates/`, `scripts/`             | Cross-agent resources; same roles as per-agent folders | Only for content two or more agents share; referenced explicitly, not auto-loaded         |
-| `LEARNINGS.md`                                                                | Shared learnings log                                   | Append after a finding; include `<slug>` in heading                                       |
+| Path                                                                          | Role                                                   | Notes                                                                               |
+| ----------------------------------------------------------------------------- | ------------------------------------------------------ | ----------------------------------------------------------------------------------- |
+| `<project_root>/AGENTS.md`                                                    | Baseline agent rules                                   | Always loaded; unconditional for all agents in this project                         |
+| `<project_root>/README.md`                                                    | Project-level overview (goal, core concept, structure) | General, not agent-specific; kept consistent with `README-<slug>.md` scope boundary |
+| `<project_root>/.agents/<slug>.agent.md`                                      | Canonical agent definition (frontmatter + rules)       | Tool-agnostic source of truth; extends `AGENTS.md`                                  |
+| `<project_root>/.github/agents/<slug>.agent.md`                               | Symlink → `../../.agents/<slug>.agent.md`              | VS Code discovery path; edit only the canonical `.agent.md` file                    |
+| `<project_root>/README-<slug>.md`                                             | User-facing description (goal, use cases)              | No internal rules/logic; kept consistent after any agent change                     |
+| `<project_root>/.agents/<slug>/skills/INDEX.md`, `skills/<skill>.md`          | Executable procedure + routing index                   |                                                                                     |
+| `<project_root>/.agents/<slug>/guides/INDEX.md`, `guides/<guide>.md`          | Static reference material                              |                                                                                     |
+| `<project_root>/.agents/<slug>/templates/INDEX.md`, `templates/<template>.md` | Fill-in output structures                              |                                                                                     |
+| `<project_root>/.agents/<slug>/scripts/<script>`                              | Deterministic helper script for mechanical checks      |                                                                                     |
+| `<project_root>/.agents/shared/guides/`, `templates/`, `scripts/`             | Cross-agent resources; same roles as per-agent folders | Only for content two or more agents share; referenced explicitly, not auto-loaded   |
+| `LEARNINGS.md`                                                                | Shared learnings log                                   | Append after a finding; include `<slug>` in heading                                 |
 
 ## Placeholder Conventions
 

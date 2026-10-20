@@ -17,5 +17,5 @@ The agent is tool-agnostic: the rules live in `.agents/evolver.agent.md` and wor
 - _"Rename the coding agent to review"_ — renames its files, symlink, headings, and references to the new slug
 - _"Move the ticket rules into a guide for the po agent"_ — adds a skill, guide, or template to an agent and registers it in the folder's `INDEX.md`
 - _"Apply the open LEARNINGS.md entries"_ — integrates open learnings into the affected agent files
-- _"Align the AGENTS.md of the ollama project with the baseline"_ — compares both ways, applies confirmed baseline differences to the project's file, keeps deliberate deviations, and logs project-only improvements as baseline candidates
+- _"Align the AGENTS.md of the ollama project with this repo's AGENTS.md"_ — compares both ways, applies confirmed differences to the project's file, keeps deliberate deviations, and logs project-only improvements for this repo's AGENTS.md
 - _"Review/optimize the coding agent"_ — analyzes an agent's files for redundancy, contradictions, or missing structure

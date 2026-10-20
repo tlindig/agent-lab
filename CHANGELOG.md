@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `validate.md`: Structure match check compares a Target Agent's files with the `## Repository Structure` table of its `AGENTS.md`.
+- `validate.md`: Tool names check verifies that tools and parameters named in `AGENTS.md` § VS Code Tool Notes exist in the harness or are gated by a setting.
+- `AGENTS.md` invariant: read a referenced file with a tool call before reporting it as applied or checked.
+
+### Changed
+
+- `AGENTS.md` Options gate: options follow the pattern `[id]. [option] — [reason]`; the recommended one starts with `**Recommended:**`.
+- `AGENTS.md` § VS Code Tool Notes: `includeIgnoredFiles` needs a narrow `includePattern`; Post-write verification also checks markup structure and table line lengths; shorter `replace_string_in_file` note. The Repository Structure table no longer refers to the Evolver.
+- `sync-agents-md.md` skips `## Repository Structure`; skills and `README-evolver.md` name `<project_root>/AGENTS.md` by path instead of "baseline".
+
 ## [0.6.0] - 2026-10-18
 
 ### Added

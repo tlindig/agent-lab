@@ -12,4 +12,4 @@ Run a skill on user request, or when a procedure or rule references it, in the o
 | `validate.md`        | Checks a Target Agent's files against fixed rules.                                   |
 | `optimize.md`        | Improves a Target Agent's files beyond correctness.                                  |
 | `apply-learnings.md` | Applies learnings from `<target-project_root>/LEARNINGS.md`.                         |
-| `sync-agents-md.md`  | Syncs a Target Agent's `<target-project_root>/AGENTS.md` with this repo's baseline.  |
+| `sync-agents-md.md`  | Syncs `<target-project_root>/AGENTS.md` with `<project_root>/AGENTS.md`.             |
