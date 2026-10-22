@@ -58,7 +58,11 @@ An agent built and maintained with this framework does exactly what it is suppos
 
 ### Keeping Context Lean
 
-Content stays inline in the `.agent.md` as long as possible; it is extracted only once a concrete condition applies (needed a second time, growing too large, or only occasionally relevant). This is the core token-efficiency mechanism: context stays lean by default and grows only on concrete need.
+Context-window management is a core design goal. Agent Lab reduces complexity through a uniform, role-scoped structure (KISS), not only through on-demand loading. Selecting a role narrows the relevant rules and procedures. Internal procedures share that context, so they need not each restate their prerequisites. Explicit workflow references reduce the need to discover and combine dependencies during a task.
+
+Content stays inline in the `.agent.md` until a concrete extraction condition applies: reuse, size, or relevance only to occasional tasks. Extracted procedures and resources load when needed.
+
+This design aims to reduce context and coordination overhead; lower token use has not been established by comparative measurement. Standard Agent Skills can use the same structural principles.
 
 ## Relation to Open Standards
 
@@ -66,9 +70,26 @@ Content stays inline in the `.agent.md` as long as possible; it is extracted onl
 - **Agent Skills:** Skills, guides, and templates are inspired by [Agent Skills](https://agentskills.io/). Both load detail only when a task needs it. Agent Lab does not follow the format and differs on purpose:
   - By default, a skill belongs to one agent. An agent is a role and a skill is one of its abilities. The same ability can differ by role: "update ticket" reads a GitHub issue for one agent and a Jira ticket for another. Separate skills avoid a switch inside one shared skill and keep each agent's context small.
   - Overlap between agents is not solved by sharing the skill. Knowledge that several agents need is shared in `.agents/shared/`. A capability that belongs to another agent's role is delegated to that agent, not copied.
-  - The agent loads a skill through its `INDEX.md`. A client does not discover it from frontmatter. A skill is of no use without its agent, so automatic loading is not wanted.
+  - The agent loads a skill through its `INDEX.md`. A client does not discover it from frontmatter. These internal procedures assume their owning agent's rules and context, so automatic loading is not wanted.
   - Activation conditions stand only in `INDEX.md`. A skill that another procedure calls runs even if its own conditions would not cover the case.
   - As a result, clients that scan for `SKILL.md` files do not find these skills.
+
+### Why Agent Lab Keeps a Uniform Agent Model
+
+Agent Skills standardizes how clients discover and load packaged capabilities. Agent Lab defines a maintenance model for role-scoped agents. These address different concerns.
+
+The current model provides:
+
+- **Self-maintenance:** The Evolver follows the same structure as its Target Agents. It can inspect and improve itself with the same procedures and validation criteria, without an Evolver-specific format.
+- **Explicit role boundaries:** Selecting an agent establishes its responsibilities, working rules, and tool configuration. Internal procedures operate within that context instead of having to establish it independently.
+- **Connected workflows:** Internal procedures reference required checks and follow-up steps explicitly. Their use does not depend on the client independently discovering each step as a relevant skill.
+- **Controlled rule propagation:** The Evolver's AGENTS.md sync procedure compares reference and target rules, proposes changes for approval, and preserves documented project deviations. Target Agents receive rules through this process, not automatic inheritance.
+
+These are benefits of Agent Lab's chosen architecture, not capabilities that the Agent Skills standard prevents. Standard skills can also bundle procedures, references, templates, and scripts. Progressive loading is shared by both approaches.
+
+The trade-off is interoperability: Agent Lab's internal skills are not discoverable as standard Agent Skills. A future integration should preserve self-maintenance and coherent workflows rather than migrate only the Evolver to a different structure.
+
+Neither format guarantees instruction compliance. Rule loading, permissions, and enforceable approval gates depend on the host.
 
 ## Where Created Agents Live
 
