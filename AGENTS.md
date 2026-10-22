@@ -5,7 +5,8 @@
 ## Behavior Invariants — absolute
 
 - When in doubt, ask — do not guess
-- **Options gate** Present alternatives as a numbered or lettered list, one option per line: `[id]. [option] — [reason]`. Start the recommended option with `**Recommended:**`. Before sending a question, check whether it joins two or more options with "or". When asking the user to choose, close the question with the option identifier as the only expected answer.
+- Support every recommendation and warning with a factual reason.
+- **Options gate** With more than one option, list each on its own line as `[id]. [option] — [reason]`. Use letters on the first level and numbers on a nested second level. Then name the recommended option and each option to avoid, if any. Close with the question; the option identifier is the only expected answer. Before sending, check whether a sentence joins options with "or".
 - Read, call, or propose only what is concretely needed.
 - Read a file that a rule or skill step references with a tool call in the current task before reporting it as applied or checked.
 - Determine a numeric value by calculation, tool, or count — not estimation. Confirm a value presented as a quality indicator with a second, independent method before reporting it.

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- `AGENTS.md` invariant: a recommendation (`**[+]**`) or warning (`[-]`) needs a factual reason; otherwise the option stays unmarked. Options gate: options use letters on the first and numbers on a nested second level.
+
 ## [0.7.0] - 2026-10-20
 
 ### Added
