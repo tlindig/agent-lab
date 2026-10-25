@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - `AGENTS.md` invariant: a recommendation (`**[+]**`) or warning (`[-]`) needs a factual reason; otherwise the option stays unmarked. Options gate: options use letters on the first and numbers on a nested second level.
+- `validate.md`: Session Start accepts a silent RERULE for an agent with `user-invocable: false`; user-facing agents keep the blocking form.
 
 ## [0.7.0] - 2026-10-20
 
