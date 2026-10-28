@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.0] - 2026-10-28
+
 ### Added
 
 - `optimize.md` Pass 2 checks the order and the catch-all branch of condition lists; `apply-learnings.md` and `sync-agents-md.md` follow it.
