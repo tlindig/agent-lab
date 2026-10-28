@@ -20,7 +20,7 @@
       - Compare the result with `Improvement`. Note agreement or deviation.
       - If the fix needs an unstated assumption or contradicts an existing pattern, ask the user.
    3. **Reference search** — run the reference search of `<project_root>/.agents/evolver.agent.md` § Validation Discipline for every changed concept, not only for removals and renames.
-   4. **Write gate** — per file, present what changes, why, the scope reasoning, the hits of the reference search, and each deviation from `Improvement`. List the entries to delete. Wait for approval.
+   4. **Write gate** — per file, present what changes, why, the scope reasoning, the hits of the reference search, and each deviation from `Improvement`. List the entries to delete. Add the KISS+DRY+STE check line (see `<project_root>/.agents/evolver.agent.md` § General Rules). Wait for approval.
    5. Apply the changes. Delete each integrated entry block entirely from `<target-project_root>/LEARNINGS.md`.
    6. Run the post-write steps of § Validation Discipline on the Target Agent.
    7. **Improvement for `<project_root>/AGENTS.md`** — if the fix went into `<target-project_root>/AGENTS.md`, `<target-project_root>` differs from `<project_root>`, and the rule is not specific to the target project, propose an entry as in `sync-agents-md.md` Step 5.

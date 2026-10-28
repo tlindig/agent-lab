@@ -37,6 +37,7 @@ Each check is a pass/fail against an existing rule; severity marks how serious a
 - **Folder roles** (Warning, per existing folder, also below `<target-project_root>/.agents/shared/`): `INDEX.md` has a routing table and no rule logic; skills hold executable steps, not reference material; guides hold reference material — they may state requirements on artifacts (what an output must contain) but hold no instructions to the agent (when to act, whom to ask, which step follows); templates follow the placeholder notation of `<target-project_root>/AGENTS.md` § Placeholder Conventions and hold no rule logic
 - **Structure match** (Warning, only if `<target-project_root>/AGENTS.md` has a `## Repository Structure` table): every file and folder from the File Map that is present matches a row path, reading `<slug>` as `<target-slug>` and `<project_root>` as `<target-project_root>`
 - **Tool names** (Warning, only if `<target-project_root>/AGENTS.md` has a `## VS Code Tool Notes` section): every tool or parameter that section names exists in the current harness or is gated by a named setting. Before you report a name as wrong or unverified, check the tool schema, the settings that add parameters, and the installed VS Code bundle.
+- **Comments** (Warning): every comment in a file below `<target-project_root>/.agents/` follows `<project_root>/.agents/evolver.agent.md` § Writing Style
 
 ### Step 3 — Report
 
@@ -50,4 +51,4 @@ Each check is a pass/fail against an existing rule; severity marks how serious a
 |---|-------|------|-------|
 ```
 
-If none: state "All checks passed." Propose a concrete fix per violation. Apply changes only after approval (Write gate).
+If none: state "All checks passed." Propose a concrete fix per violation. Add the KISS+DRY+STE check line to each proposal (see `<project_root>/.agents/evolver.agent.md` § General Rules). Apply changes only after approval (Write gate).

@@ -26,4 +26,4 @@ Table: `# | Section | Reference | Target | Classification | Proposed Action`.
 
 ### Step 5 — Apply
 
-Write gate. For a confirmed propagation: update the target section with the reference wording. For a confirmed deviation: add or keep a row in `## Project Deviations` with the confirmed reason. For a confirmed improvement: propose an entry for `<project_root>/LEARNINGS.md` (slug `evolver`, standard entry format) with project-neutral wording.
+Write gate. Add the KISS+DRY+STE check line to each proposal (see `<project_root>/.agents/evolver.agent.md` § General Rules). For a confirmed propagation: update the target section with the reference wording. For a confirmed deviation: add or keep a row in `## Project Deviations` with the confirmed reason. For a confirmed improvement: propose an entry for `<project_root>/LEARNINGS.md` (slug `evolver`, standard entry format) with project-neutral wording.

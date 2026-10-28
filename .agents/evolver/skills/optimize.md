@@ -6,7 +6,7 @@ Run `validate.md` first — optimize assumes the Target Agent already passes val
 
 Read every file for this Target Agent (see `validate.md` Step 1's File Map) before Pass 1.
 
-Run the passes below in order. For each pass: analyze, present each finding as a proposal (Write gate: why it makes sense, then the concrete before/after text), wait for confirmation, apply confirmed changes, then proceed to the next pass so it sees the corrected state.
+Run the passes below in order. For each pass: analyze, present each finding as a proposal (Write gate: why it makes sense, then the concrete before/after text, then the KISS+DRY+STE check line, see `<project_root>/.agents/evolver.agent.md` § General Rules), wait for confirmation, apply confirmed changes, then proceed to the next pass so it sees the corrected state.
 
 ### Pass 1 — Structural Integrity (baseline)
 

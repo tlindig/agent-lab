@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `evolver.agent.md` § Writing Style: keep change history in version control and comment only on non-obvious behavior or a hazard; `validate.md` Comments check enforces it.
+
+### Changed
+
+- KISS+DRY+STE check: each proposal ends with the line `Check: KISS ok · DRY ok · STE ok`; `validate.md`, `optimize.md`, `apply-learnings.md`, `sync-agents-md.md`, `extend-agent.md`, and `create-agent.md` reference the check at the step that presents a proposal.
+- `AGENTS.md` § VS Code Tool Notes: inline scripts with `!` in double quotes (use a quoted heredoc), stale search index after a deletion, absolute `includePattern` in a multi-root workspace.
+
 ## [0.8.0] - 2026-10-28
 
 ### Added

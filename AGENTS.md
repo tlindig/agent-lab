@@ -6,7 +6,7 @@
 
 - When in doubt, ask — do not guess
 - Support every recommendation and warning with a factual reason.
-- **Options gate** With more than one option, list each on its own line as `[id]. [mark] [option] — [reason]`. Use letters on the first level and numbers on a nested second level. Mark the one recommended option **(+)**, or state that the options are equal. Mark each option to avoid (-), if any. Close with the question; the option identifier is the only expected answer. Before sending, check whether a sentence joins options with "or".
+- **Options gate** With more than one option, list each on its own line as `[id]. [mark] [option] — [reason]`. Use letters on the first level and numbers on a nested second level. Mark the one recommended option with bold "(+)", or state that the options are equal. Mark each option to avoid "(-)", if any. Close with the question; the option identifier is the only expected answer. Before sending, check whether a sentence joins options with "or".
 - Read, call, or propose only what is concretely needed.
 - Read a file that a rule or skill step references with a tool call in the current task before reporting it as applied or checked.
 - Determine a numeric value by calculation, tool, or count — not estimation. Confirm a value presented as a quality indicator with a second, independent method before reporting it.
@@ -93,11 +93,13 @@ After two failed attempts at the same goal, change the approach once. Use a path
 
 ## VS Code Tool Notes
 
-- **Bash negation:** `if ! <cmd>` can fail with `!: command not found` in this tool's shell, even non-interactively — cause unconfirmed. Avoid the `!` token entirely: invert the condition and swap the `then`/`else` branches instead of negating.
+- **Bash negation:** `if ! <cmd>` can fail with `!: command not found` in this tool's shell, even non-interactively — cause unconfirmed. Avoid the `!` token entirely: invert the condition and swap the `then`/`else` branches instead of negating. The same token breaks inline scripts: `!` inside double quotes (e.g. `node -e "…!x…"`) fails with `event not found` (history expansion). Run inline scripts through a quoted heredoc: `node - <<'EOF'`.
 - **Post-write verification:** After any approved write, deletion, or validation action, read the result in a separate call after the write completes, and confirm it matches what was intended (e.g. `read_file`). For structured markup (HTML/XML/JSON/code), also check the tag/bracket structure. For an aligned Markdown table, compare the line lengths of all rows with `awk '{print length($0)}'`. Correct a mismatch per the Write gate's self-correction exception.
 - `read_file`, `grep_search`, and `file_search` also work in hidden directories (e.g. `.agents/`, `.github/`).
 - `grep_search`/`file_search` skip `.gitignore`d paths (e.g. `build/`) by default. To include an ignored path, set `includeIgnoredFiles: true` and limit `includePattern` to that path.
+- `grep_search`/`file_search` can report matches in files deleted a moment ago (stale index). Confirm a deletion with `list_dir`.
 - `grep_search`/`file_search` search only declared workspace folders. A path outside them returns empty results without an error, even with `includeIgnoredFiles: true`. Use `list_dir`/`read_file` instead.
+- In a multi-root workspace, give `includePattern` as `<absolute folder path>/**`. A relative pattern returned no matches. The effect of `includeIgnoredFiles` here is unverified.
 - `read_file` works with absolute paths outside the workspace.
 - **File writes:** Write and edit files with the editor tools (e.g. `replace_string_in_file`), using absolute paths for files in hidden directories. Shell writes (`sed -i`, `>`, `tee`) bypass the VS Code diff and undo.
 - **Deferred tools:** Call tools from the function list directly. For tools exclusively in `<availableDeferredTools>`, load with `tool_search` first — batch multiple groups in one call.
