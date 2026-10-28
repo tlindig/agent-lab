@@ -15,4 +15,4 @@
 - [ ] File content is in English, per `AGENTS.md`
 - [ ] No contradiction with the Behavior Invariants or Rule Hierarchy
 - [ ] `LEARNINGS.md` updated if this PR resolves an open entry
-- [ ] `CHANGELOG.md` updated under `[Unreleased]`
+- [ ] `CHANGELOG.md` updated under `[Unreleased]` if the change alters agent behavior or a check result

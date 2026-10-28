@@ -14,6 +14,7 @@ Table `File | Load condition | Present`:
 - `<target-project_root>/.agents/<target-slug>/skills/INDEX.md`, `skills/<skill>.md` — if present
 - `<target-project_root>/.agents/<target-slug>/guides/INDEX.md`, `guides/<guide>.md` — if present
 - `<target-project_root>/.agents/<target-slug>/templates/INDEX.md`, `templates/<template>.md` — if present
+- `<target-project_root>/.agents/<target-slug>/scripts/<script>` — if present
 - `<target-project_root>/.agents/shared/guides/`, `templates/`, `scripts/` (`INDEX.md` in guides and templates) — if present
 
 ### Step 2 — Check Rules

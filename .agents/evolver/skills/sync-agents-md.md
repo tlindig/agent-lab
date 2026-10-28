@@ -18,6 +18,7 @@ For each remaining diff:
 
 - Reference-only content, or reference wording newer than the target's: propose adopting the reference version.
 - Target-only content, or target wording with no registry entry: suggest one of two classifications from context: improvement (candidate for the reference) or deliberate deviation (registry row), e.g. project-specific contact data or an existing language choice. Confirm the suggestion with the user before applying it.
+- Both sides differ and neither is clearly newer: ask the user which wording applies.
 
 ### Step 4 — Report
 

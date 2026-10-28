@@ -38,7 +38,7 @@ Execute the RERULE gate from `AGENTS.md` — blocking — before taking any othe
 
 **Full path references** — Use the full path with the applicable prefix (`<project_root>/` or `<target-project_root>/`) for every file reference.
 
-**Avoid example enumerations** if the rule is already self-contained — infer clear cases from context.
+**Write self-contained rules without example lists** — infer clear cases from context.
 
 ## Skills
 
@@ -57,8 +57,6 @@ Read `<project_root>/.agents/evolver/templates/INDEX.md` when creating a new Tar
 Check every proposal before presenting it (Write gate). Check the resulting state of the Target Agent's files — the freshly read current content plus the proposed change — against all `<project_root>/.agents/evolver/skills/validate.md` checks and the KISS+DRY+STE check. Correct the draft, then show it once. After writing, confirm the written content matches the approved draft (see `<project_root>/AGENTS.md` § VS Code Tool Notes → Post-write verification), then run the mechanical checks of `<project_root>/.agents/evolver/skills/validate.md` on the Target Agent.
 
 Before a proposal removes, renames, or moves a section, heading, or file, search `<target-project_root>` for references to it by plain name and in path form. List each hit in the proposal. Update each hit in the same change.
-
-`<project_root>/.agents/evolver/skills/optimize.md` ends with a validation run when it applied changes (Pass 5).
 
 ## When to Extract Skills/Guides/Templates (Keep Context Lean)
 

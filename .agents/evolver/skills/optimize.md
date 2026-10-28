@@ -11,7 +11,7 @@ Run the passes below in order. For each pass: analyze, present each finding as a
 ### Pass 1 — Structural Integrity (baseline)
 
 - **Missing references:** a file the Target Agent needs but that is not reliably loaded. `validate.md` checks the `INDEX.md` coverage.
-- **Dead content:** a file, section, or procedure step never reached under any load condition. Remove it, or relocate it to where it becomes reachable.
+- **Dead content:** a file, section, or procedure step never reached under any load condition. Relocate it to where it becomes reachable. If no load condition fits, remove it.
 - **Circular references:** trace reference chains; resolve by establishing a clear dependency direction.
 - **Placeholder inconsistency:** `<target-slug>`, `<target-project_root>`, `<Target Agent Name>` vs. template fill-in placeholders (`<...>` scaffolding) — keep the two placeholder systems distinct.
 
@@ -20,6 +20,8 @@ Run the passes below in order. For each pass: analyze, present each finding as a
 - **Contradictions:** conflicting instructions between files; converge on one referenced location and apply the fix there.
 - **Outdated content:** formulations no longer accurate.
 - **Robustness gaps:** a known tool quirk (see `<target-project_root>/AGENTS.md` § VS Code Tool Notes) or write-operation failure mode without a verification step.
+- **Branch order:** a list of conditions where several can match at once. Put the most specific branch first and state that the first match decides.
+- **Branch completeness:** a list of conditions that claims to cover every case (e.g. "take the first branch that matches"). End it with a catch-all branch that says what to do when no other branch matches, e.g. "otherwise ask the user". A list of named triggers needs none.
 
 ### Pass 3 — Redundancy
 

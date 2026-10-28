@@ -7,10 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `optimize.md` Pass 2 checks the order and the catch-all branch of condition lists; `apply-learnings.md` and `sync-agents-md.md` follow it.
+- `AGENTS.md` § Failed Attempts: after two failed attempts the agent changes the approach once, then stops and reports to the caller.
+- `validate.md`: the File Map lists `.agents/<target-slug>/scripts/`.
+
 ### Changed
 
-- `AGENTS.md` invariant: a recommendation (`**[+]**`) or warning (`[-]`) needs a factual reason; otherwise the option stays unmarked. Options gate: options use letters on the first and numbers on a nested second level.
+- `AGENTS.md` § Learnings: a finding takes the first matching branch (rule not followed → RERULE; rule ambiguous → reword; no rule → filter unexpected, preventable, relevant; otherwise analyze and ask).
+- `AGENTS.md` invariant: every recommendation and warning needs a factual reason. Options gate: options use letters on the first and numbers on a nested second level; the recommended option carries `**(+)**`, each option to avoid `(-)`, and equal options stay unmarked.
+- `AGENTS.md` Action gate: destructive actions are asked in a question that lists each action and nothing else; the agent does not delete files and asks to move a file to the trash with `gio trash`; the user deletes permanently.
 - `validate.md`: Session Start accepts a silent RERULE for an agent with `user-invocable: false`; user-facing agents keep the blocking form.
+- `optimize.md` Pass 1: dead content is relocated first and removed only if no load condition fits.
 
 ## [0.7.0] - 2026-10-20
 

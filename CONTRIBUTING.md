@@ -19,6 +19,7 @@ Thanks for considering a contribution to Agent Lab. This project is a rule frame
 - File content (rules, docs, commit messages) is written in English, as defined in `AGENTS.md`.
 - Rule text follows KISS, DRY, short single-idea sentences, active voice, and positive instruction (what to do, not what to avoid) — the same standard the Evolver Agent checks for.
 - Commit messages use a short `type: summary` prefix (`feat:`, `fix:`, `refactor:`, `docs:`), consistent with the existing history.
+- Record a change in `CHANGELOG.md` only when it alters what an agent does or what a check reports. Put wording, formatting, and duplicate-removal fixes in the commit message only. Before a release, condense the `[Unreleased]` entries to a few lines per topic.
 - Classify your own change as RULE (how an agent should work) or DATA (project content) in the PR description if it isn't obvious — this mirrors the classification agents are required to do for user input.
 
 ## Reporting Process Gaps
