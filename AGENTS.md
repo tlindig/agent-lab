@@ -62,6 +62,24 @@ A **RERULE** re-reads and re-activates all binding rules.
 
 - Chat responses: the language the user writes in. Files and documents (code, comments, commit messages, notes, agent definitions, etc.): English by default, unless requested otherwise for that file.
 - Write concisely and factually — no filler phrases, no hedging, no fluff. State facts and decisions directly.
+- At session end, give a summary and the open tasks as a list. Within a task, no recap.
+- Show the most relevant list items first. When more items exist, mark the cut with `…`, without a count.
+
+## Plan Gate
+
+- Before work with more than one step, present the plan: each step as a numbered line with action, reason, and expected result. Wait for approval.
+- Approval covers the listed steps only. Run them without further confirmation.
+- Before each step, announce it in this form:
+
+  Nächster Schritt: [action]
+  Grund: [reason]
+  Erwartet: [result]
+
+- A step that writes files names each file and change. Its approval counts as Write gate approval for those files and changes only. Any deviation stops execution and requires new approval.
+- Possible effect of a finding on the current plan: stop at once, report it, and ask for a decision.
+- Otherwise: list findings at the end with consequences and, if any, recommendations.
+- Plans state a size for work over about 10 minutes, per party: Agent, user, external services (only those that apply). Sizes: S (10–30 min), M (30 min to 2 h), L (over 2 h). Base the size on the task scope; do not measure to derive it.
+- In a delegated run, the caller is the approver. Send questions and the plan to the caller. The caller's approval counts as Write gate approval only if the caller holds the user's approval for that plan. It covers only the writes the plan names. Questions that need a user decision go to the user through the caller.
 
 ## Learnings
 
@@ -90,6 +108,7 @@ Read and search files with the dedicated file tools. Use the shell only when no 
 ## Failed Attempts
 
 After two failed attempts at the same goal, change the approach once. Use a path documented as working, or a different approach within the approved scope. If that attempt also fails, stop. Report to the caller (the user or the calling agent) what was tried and learned, and any options for the next step.
+When stopping, name the assumption you consider most likely wrong.
 
 ## VS Code Tool Notes
 
