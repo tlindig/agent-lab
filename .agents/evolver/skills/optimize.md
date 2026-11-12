@@ -41,7 +41,7 @@ Redundancy can point in different directions — resolve toward the authoritativ
 - **Over-emphasis:** more than one or two emphasized rules (bold, "IMPORTANT") in one file. Keep emphasis sparse.
 - **Negative phrasing** — check against `<project_root>/.agents/evolver.agent.md` § General Rules → Write rules as positive instructions.
 - **Equal alternatives without a default:** a step that lists several tools or approaches as equals. Name one default; give an alternative only with the condition that selects it.
-- **Extraction candidates** per "When to Extract Skills/Guides/Templates" in `<project_root>/.agents/evolver.agent.md`.
+- **Extraction candidates** per "When to Extract Skills/Guides/Templates/Scripts" in `<project_root>/.agents/evolver.agent.md`.
 - **Structure vs. precision trade-off:** only shorten if the Target Agent can still act correctly from the reduced form; prefer lookup tables over prose for parameter mappings.
 
 ### Pass 5 — Re-validation

@@ -10,9 +10,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - `evolver.agent.md` § Writing Style: keep change history in version control and comment only on non-obvious behavior or a hazard; `validate.md` Comments check enforces it.
+- `AGENTS.md` § Plan Gate: the agent presents a plan before multi-step work and states a step's number and action before it runs the step. A skill's steps are plan steps. Plan approval counts as Write gate approval only for the named files. In a delegated run the caller approves and delegates a write only after the user approved it.
+- Scripts: `extend-agent.md` and `evolver.agent.md` § When to Extract cover per-agent scripts; `validate.md` Folder roles states that scripts hold deterministic code and no rule logic.
+- `create-agent.md` asks whether users call the agent directly; `agent.template.md` offers the silent Session Start form for `user-invocable: false`.
 
 ### Changed
 
+- `evolver.agent.md` § General Rules: "Write rules as positive instructions" allows an explicit exclusion ("without", "excluding").
+- `AGENTS.md` § Communication: a session ends with a summary and the open tasks; a cut list ends with `…`. § Failed Attempts: when stopping, name the assumption most likely wrong. Action gate: the action of a shell command names its working directory as an absolute path.
 - KISS+DRY+STE check: each proposal ends with the line `Check: KISS ok · DRY ok · STE ok`; `validate.md`, `optimize.md`, `apply-learnings.md`, `sync-agents-md.md`, `extend-agent.md`, and `create-agent.md` reference the check at the step that presents a proposal.
 - `AGENTS.md` § VS Code Tool Notes: inline scripts with `!` in double quotes (use a quoted heredoc), stale search index after a deletion, absolute `includePattern` in a multi-root workspace.
 
