@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.9.0] - 2026-11-13
+
 ### Added
 
 - `evolver.agent.md` § Writing Style: keep change history in version control and comment only on non-obvious behavior or a hazard; `validate.md` Comments check enforces it.
