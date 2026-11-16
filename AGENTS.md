@@ -81,6 +81,11 @@ A **RERULE** re-reads and re-activates all binding rules.
 - For work over about 10 minutes, state a size per party (agent, user, external services; only those involved): S (10–30 min), M (30 min–2 h), L (over 2 h). Derive it from the task scope, not from measurement.
 - In a delegated run, the caller approves. The caller delegates a write only after the user approved it.
 
+## Failed Attempts
+
+After two failed attempts at the same goal, change the approach once. Use a path documented as working, or a different approach within the approved scope. If that attempt also fails, stop. Report to the caller (the user or the calling agent) what was tried and learned, and any options for the next step.
+When stopping, name the assumption you consider most likely wrong.
+
 ## Learnings
 
 Improve your own rules and processes continuously. Look for findings when a task ends and when a problem surfaces. A finding is one of:
@@ -101,14 +106,19 @@ Check each finding before proposing an entry. Take the first branch that matches
 
 For each remaining finding, propose an entry for `LEARNINGS.md` with a concrete `Improvement`. Append it after approval (Write gate). Use the entry format defined there; include `<slug>` in the heading. Change agent files only in an Evolver Agent run, which checks them against the quality standards. Apply learnings only as a separate, dedicated step, outside the task session.
 
+## Placeholder Conventions
+
+| Placeholder      | Meaning                                                             | Example         |
+| ---------------- | ------------------------------------------------------------------- | --------------- |
+| `<project_root>` | Root directory of this Agent Lab repository (wherever it is cloned) |                 |
+| `<slug>`         | Agent's lowercase identifier — used in paths and filenames          | `evolver`       |
+| `<Agent Name>`   | Human-readable display name — used in prose and YAML frontmatter    | `Evolver Agent` |
+
+Templates mark fill-in content by kind: scaffolding templates (they create agent or project files) use `<...>`; output templates (they shape an agent's output) use `[...]`. A bare `<...>` is allowed in either kind for a compact identifier, filename, path, or formula when the template states this notation locally.
+
 ## Tool Use
 
 Read and search files with the dedicated file tools. Use the shell only when no tool covers the task (e.g. `git`).
-
-## Failed Attempts
-
-After two failed attempts at the same goal, change the approach once. Use a path documented as working, or a different approach within the approved scope. If that attempt also fails, stop. Report to the caller (the user or the calling agent) what was tried and learned, and any options for the next step.
-When stopping, name the assumption you consider most likely wrong.
 
 ## VS Code Tool Notes
 
@@ -124,32 +134,6 @@ When stopping, name the assumption you consider most likely wrong.
 - **Deferred tools:** Call tools from the function list directly. For tools exclusively in `<availableDeferredTools>`, load with `tool_search` first — batch multiple groups in one call.
 - **Browser text fields:** When appending to an already-filled browser text field, do not rely on cursor-positioning keys (e.g. `Control+End`) — retype the full combined content in one call, or verify immediately with `read_page` after the append.
 - **`replace_string_in_file` scope:** `oldString` must span the whole block that `newString` replaces. A too-short `oldString` leaves old content in place and duplicates it. For structured markup (HTML/XML/JSON/code), prefer a parser over a large text replace. Use text replace only for free text or small, precise edits.
-
-## Repository Structure
-
-| Path                                                                          | Role                                                   | Notes                                                                               |
-| ----------------------------------------------------------------------------- | ------------------------------------------------------ | ----------------------------------------------------------------------------------- |
-| `<project_root>/AGENTS.md`                                                    | Baseline agent rules                                   | Always loaded; unconditional for all agents in this project                         |
-| `<project_root>/README.md`                                                    | Project-level overview (goal, core concept, structure) | General, not agent-specific; kept consistent with `README-<slug>.md` scope boundary |
-| `<project_root>/.agents/<slug>.agent.md`                                      | Canonical agent definition (frontmatter + rules)       | Tool-agnostic source of truth; extends `AGENTS.md`                                  |
-| `<project_root>/.github/agents/<slug>.agent.md`                               | Symlink → `../../.agents/<slug>.agent.md`              | VS Code discovery path; edit only the canonical `.agent.md` file                    |
-| `<project_root>/README-<slug>.md`                                             | User-facing description (goal, use cases)              | No internal rules/logic; kept consistent after any agent change                     |
-| `<project_root>/.agents/<slug>/skills/INDEX.md`, `skills/<skill>.md`          | Executable procedure + routing index                   |                                                                                     |
-| `<project_root>/.agents/<slug>/guides/INDEX.md`, `guides/<guide>.md`          | Static reference material                              |                                                                                     |
-| `<project_root>/.agents/<slug>/templates/INDEX.md`, `templates/<template>.md` | Fill-in output structures                              |                                                                                     |
-| `<project_root>/.agents/<slug>/scripts/<script>`                              | Deterministic helper script for mechanical checks      |                                                                                     |
-| `<project_root>/.agents/shared/guides/`, `templates/`, `scripts/`             | Cross-agent resources; same roles as per-agent folders | Only for content two or more agents share; referenced explicitly, not auto-loaded   |
-| `LEARNINGS.md`                                                                | Shared learnings log                                   | Append after a finding; include `<slug>` in heading                                 |
-
-## Placeholder Conventions
-
-| Placeholder      | Meaning                                                             | Example         |
-| ---------------- | ------------------------------------------------------------------- | --------------- |
-| `<project_root>` | Root directory of this Agent Lab repository (wherever it is cloned) |                 |
-| `<slug>`         | Agent's lowercase identifier — used in paths and filenames          | `evolver`       |
-| `<Agent Name>`   | Human-readable display name — used in prose and YAML frontmatter    | `Evolver Agent` |
-
-Templates mark fill-in content by kind: scaffolding templates (they create agent or project files) use `<...>`; output templates (they shape an agent's output) use `[...]`. A bare `<...>` is allowed in either kind for a compact identifier, filename, path, or formula when the template states this notation locally.
 
 <!-- RERULE build rule:
   "Active Agent:  **<slug>**"

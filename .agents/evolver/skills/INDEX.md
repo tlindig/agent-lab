@@ -8,7 +8,7 @@ Run a skill on user request, or when a procedure or rule references it, in the o
 | -------------------- | ------------------------------------------------------------------------------------ |
 | `create-agent.md`    | Creates a new agent.                                                                 |
 | `rename-agent.md`    | Renames an agent.                                                                    |
-| `extend-agent.md`    | Adds a skill, guide, or template to a Target Agent.                                  |
+| `extend-agent.md`    | Adds a skill, guide, template, or script to a Target Agent.                          |
 | `validate.md`        | Checks a Target Agent's files against fixed rules.                                   |
 | `optimize.md`        | Improves a Target Agent's files beyond correctness.                                  |
 | `apply-learnings.md` | Applies learnings from `<target-project_root>/LEARNINGS.md`.                         |

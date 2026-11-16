@@ -14,11 +14,11 @@ Read the target's `## Project Deviations` section, if present (table: `Section |
 
 ### Step 3 — Classify remaining differences
 
-For each remaining diff:
+For each remaining diff, take the first bullet that matches:
 
 - Reference-only content, or reference wording newer than the target's: propose adopting the reference version.
-- Target-only content, or target wording with no registry entry: suggest one of two classifications from context: improvement (candidate for the reference) or deliberate deviation (registry row), e.g. project-specific contact data or an existing language choice. Confirm the suggestion with the user before applying it.
 - Both sides differ and neither is clearly newer: ask the user which wording applies.
+- Otherwise (target-only content, or target wording with no registry entry): suggest one of two classifications from context: improvement (candidate for the reference) or deliberate deviation (registry row), e.g. project-specific contact data or an existing language choice. Confirm the suggestion with the user before applying it.
 
 ### Step 4 — Report
 
