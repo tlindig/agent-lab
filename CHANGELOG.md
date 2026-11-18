@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.11.0] - 2026-11-18
+
+### Added
+
+- `AGENTS.md` VS Code Tool Notes "File writes": states that no editor tool deletes files.
+
+### Changed
+
+- `evolver.agent.md` § General Rules → KISS+DRY+STE check: the agent compares the draft with each point of the criteria sources and shows the result per criterion; the fixed line `Check: KISS ok · DRY ok · STE ok` is removed. Six skills say "Apply the KISS+DRY+STE check" instead of "Add the … check line".
+- `evolver.agent.md` § Writing Style: rule text describes only what is in effect now and needed; statements about earlier states are deleted.
+- `evolver.agent.md` § When to Extract: content that `AGENTS.md` references goes to `.agents/shared/`.
+- `validate.md`: Shared use accepts an `AGENTS.md` reference; new Shared placement check.
+
 ## [0.10.0] - 2026-11-17
 
 ### Changed
