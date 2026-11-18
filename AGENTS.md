@@ -130,7 +130,7 @@ Read and search files with the dedicated file tools. Use the shell only when no 
 - `grep_search`/`file_search` search only declared workspace folders. A path outside them returns empty results without an error, even with `includeIgnoredFiles: true`. Use `list_dir`/`read_file` instead.
 - In a multi-root workspace, give `includePattern` as `<absolute folder path>/**`. A relative pattern returned no matches. The effect of `includeIgnoredFiles` here is unverified.
 - `read_file` works with absolute paths outside the workspace.
-- **File writes:** Write and edit files with the editor tools (e.g. `replace_string_in_file`), using absolute paths for files in hidden directories. Shell writes (`sed -i`, `>`, `tee`) bypass the VS Code diff and undo.
+- **File writes:** Write and edit files with the editor tools (e.g. `replace_string_in_file`), using absolute paths for files in hidden directories. Shell writes (`sed -i`, `>`, `tee`) bypass the VS Code diff and undo. No editor tool deletes files.
 - **Deferred tools:** Call tools from the function list directly. For tools exclusively in `<availableDeferredTools>`, load with `tool_search` first — batch multiple groups in one call.
 - **Browser text fields:** When appending to an already-filled browser text field, do not rely on cursor-positioning keys (e.g. `Control+End`) — retype the full combined content in one call, or verify immediately with `read_page` after the append.
 - **`replace_string_in_file` scope:** `oldString` must span the whole block that `newString` replaces. A too-short `oldString` leaves old content in place and duplicates it. For structured markup (HTML/XML/JSON/code), prefer a parser over a large text replace. Use text replace only for free text or small, precise edits.
